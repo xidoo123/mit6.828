@@ -5,6 +5,14 @@ gogogo!
 
 ## lab1
 
+In this lab, grader will check two functions
+
+* octive part of printf implementation
+
+* backtrace implementation
+
+Result:
+
 ```
 x1do0@ubuntu:~/mit6.828/lab$ make grade
 make clean
