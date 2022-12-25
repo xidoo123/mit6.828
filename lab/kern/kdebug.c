@@ -181,6 +181,12 @@ debuginfo_eip(uintptr_t addr, struct Eipdebuginfo *info)
 	// Your code here.
 
 
+	stab_binsearch(stabs, &lline, &rline, N_SLINE, addr);
+	if (lline == 0)
+		return -1;
+	// cprintf("[+] %d, %d, %d, %x\n", lline, rline, lfun, stabs[lfun].n_value);
+	info->eip_line = stabs[rline].n_desc;
+
 	// Search backwards from the line number for the relevant filename
 	// stab.
 	// We can't just use the "lfile" stab because inlined functions
