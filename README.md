@@ -1,13 +1,13 @@
 # mit6.828
 
-gogogo!
+Looking for answers all the time makes one miss the most intersting part, but having an answer for reference definitely make life easier. 
 
 
 ## lab1
 
 In this lab, grader will check two functions
 
-* octive part of printf implementation
+* octal part of printf implementation
 
 * backtrace implementation
 
