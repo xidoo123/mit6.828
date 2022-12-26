@@ -100,8 +100,21 @@ runcmd(struct cmd *cmd)
   case '>':
   case '<':
     rcmd = (struct redircmd*)cmd;
-    fprintf(stderr, "redir not implemented\n");
+    // fprintf(stderr, "redir not implemented\n");
     // Your code here ...
+
+    // close STDIN or STDOUT
+    if (close(rcmd->fd) < 0) {
+      perror("close rcmd->fd");
+      _exit(0);
+    }
+    // substitute with target file
+    if (open(rcmd->file, rcmd->flags, 0644) < 0) {
+      perror("open rcmd->file");
+      _exit(0);
+    }
+
+    // all these are done in child process, so our parent process will still run smoothly
     runcmd(rcmd->cmd);
     break;
 
