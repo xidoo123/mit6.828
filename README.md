@@ -148,3 +148,15 @@ After finishing this part, we will see there is one check pass.
 check_page_free_list() succeeded!
 ```
 
+### `page_alloc` and `page_free`
+
+this part should be straight-forward.
+
+In `ALLOC_ZERO` functionality, the spec says return physical page with '\0' bytes.  Since we can not `memset` physical memory, the only way is to zero kernel virtual memory (?)
+
+```c
+// memset((char *)page2pa(page_free_list), 0, PGSIZE);
+memset(page2kva(page_free_list), 0, PGSIZE);
+```
+
+After this, we will pass the `check_page_alloc()` check

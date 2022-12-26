@@ -330,7 +330,28 @@ struct PageInfo *
 page_alloc(int alloc_flags)
 {
 	// Fill this function in
-	return 0;
+
+	// no more page in free list, we run out of free memory
+	if (page_free_list == 0)
+		return 0;
+
+	// get the previous page in free link
+	struct PageInfo* last_free = page_free_list->pp_link;
+	struct PageInfo* result = page_free_list;
+
+	// get a free page from the list
+	page_free_list->pp_link = 0;
+
+	if (alloc_flags & ALLOC_ZERO) {
+		// cprintf("[?] alloc zero, %x, %x\n", page_free_list, PADDR(page_free_list));
+		// memset((char *)page2pa(page_free_list), 0, PGSIZE);
+		memset(page2kva(page_free_list), 0, PGSIZE);
+	}
+	
+	// update free list head
+	page_free_list = last_free;
+
+	return result;
 }
 
 //
@@ -343,6 +364,17 @@ page_free(struct PageInfo *pp)
 	// Fill this function in
 	// Hint: You may want to panic if pp->pp_ref is nonzero or
 	// pp->pp_link is not NULL.
+
+	if (pp == 0)
+		return;
+	if (pp->pp_link != 0)
+		panic("page_free: double free or corrupted\n");
+	if (pp->pp_ref != 0)
+		panic("page_free: other pointers still point to it, mind use-after-free!\n");
+
+	pp->pp_link = page_free_list;
+	page_free_list = pp;
+
 }
 
 //
@@ -610,8 +642,10 @@ check_page_alloc(void)
 	assert((pp = page_alloc(ALLOC_ZERO)));
 	assert(pp && pp0 == pp);
 	c = page2kva(pp);
-	for (i = 0; i < PGSIZE; i++)
+	for (i = 0; i < PGSIZE; i++) {
+		// cprintf("[?] %d\n", i);
 		assert(c[i] == 0);
+	}
 
 	// give free list back
 	page_free_list = fl;
