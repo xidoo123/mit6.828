@@ -1,0 +1,3 @@
+child inherits parent fd, each fd points to the same IO object in kernel, so when closing one fd in parent, it's closed in child too
+
+but why closing one fd in child, it doesn't affect parent??
