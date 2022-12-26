@@ -103,7 +103,13 @@ boot_alloc(uint32_t n)
 	//
 	// LAB 2: Your code here.
 
-	return NULL;
+	if ((uint32_t)nextfree > 0xffffffff - n)
+		panic("boot_alloc: out of memory\n");
+
+	result = nextfree;
+	nextfree = ROUNDUP(result + n , PGSIZE);
+
+	return result;
 }
 
 // Set up a two-level page table:
@@ -125,12 +131,14 @@ mem_init(void)
 	i386_detect_memory();
 
 	// Remove this line when you're ready to test this function.
-	panic("mem_init: This function is not finished\n");
+	// panic("mem_init: This function is not finished\n");
 
 	//////////////////////////////////////////////////////////////////////
 	// create initial page directory.
 	kern_pgdir = (pde_t *) boot_alloc(PGSIZE);
 	memset(kern_pgdir, 0, PGSIZE);
+
+	// cprintf("[?] %x\n", kern_pgdir);
 
 	//////////////////////////////////////////////////////////////////////
 	// Recursively insert PD in itself as a page table, to form
@@ -149,6 +157,11 @@ mem_init(void)
 	// to initialize all fields of each struct PageInfo to 0.
 	// Your code goes here:
 
+	n = npages * sizeof(struct PageInfo);
+	pages = (struct PageInfo *) boot_alloc(n);
+	memset(pages, 0, n);
+
+	// cprintf("[?] %x\n", pages);
 
 	//////////////////////////////////////////////////////////////////////
 	// Now that we've allocated the initial kernel data structures, we set
@@ -252,11 +265,53 @@ page_init(void)
 	// NB: DO NOT actually touch the physical memory corresponding to
 	// free pages!
 	size_t i;
-	for (i = 0; i < npages; i++) {
+	// for (i = 0; i < npages; i++) {
+	// 	pages[i].pp_ref = 0;
+	// 	pages[i].pp_link = page_free_list;
+	// 	page_free_list = &pages[i];
+	// }
+
+	// 1)	first page in use
+	pages[0].pp_ref = 1;
+	pages[0].pp_link = 0;
+
+	// 2)	[1-npages_basemem) free
+	for (i = 1; i < npages_basemem; i++) {
 		pages[i].pp_ref = 0;
 		pages[i].pp_link = page_free_list;
 		page_free_list = &pages[i];
 	}
+
+	// [npages_basemem, IOPHYSMEM / PGSIZE) free
+	// cprintf("[?] %d, %d, %d\n", npages_basemem, IOPHYSMEM / PGSIZE, EXTPHYSMEM / PGSIZE);
+	for (; i < IOPHYSMEM / PGSIZE; i++) {
+		pages[i].pp_ref = 0;
+		pages[i].pp_link = page_free_list;
+		page_free_list = &pages[i];
+	}
+
+	// 3) [IOPHYSMEM / PGSIZE, EXTPHYSMEM / PGSIZE) in use
+	for (; i < EXTPHYSMEM / PGSIZE; i++) {
+		pages[i].pp_ref = 1;
+		pages[i].pp_link = 0;
+	}
+
+
+	// cprintf("[?] %d\n", PADDR(boot_alloc(0)) / PGSIZE);
+	// 4) [EXTPHYSMEM / PGSIZE, kernel end) in use
+	for (; i < PADDR(boot_alloc(0)) / PGSIZE; i++) {
+		pages[i].pp_ref = 1;
+		pages[i].pp_link = 0;
+	}
+
+	// cprintf("[?] %d\n", npages);
+	// [kernel end, npages) free
+	for (; i < npages; i++) {
+		pages[i].pp_ref = 0;
+		pages[i].pp_link = page_free_list;
+		page_free_list = &pages[i];
+	}
+
 }
 
 //
