@@ -40,6 +40,12 @@ struct pipecmd {
 int fork1(void);  // Fork but exits on failure.
 struct cmd *parsecmd(char*);
 
+int 
+min(int a, int b) 
+{
+  return a < b ? a : b;
+}
+
 // Execute cmd.  Never returns.
 void
 runcmd(struct cmd *cmd)
@@ -61,8 +67,34 @@ runcmd(struct cmd *cmd)
     ecmd = (struct execcmd*)cmd;
     if(ecmd->argv[0] == 0)
       _exit(0);
-    fprintf(stderr, "exec not implemented\n");
+    // fprintf(stderr, "exec not implemented\n");
     // Your code here ...
+
+    // first try current directory
+    char cmd_1[50] = "./";
+    char *argv_1[MAXARGS];
+    strncat(cmd_1, ecmd->argv[0], min(strlen(ecmd->argv[0]), 50 - strlen(cmd_1)));
+    argv_1[0] = cmd_1;
+    for (int i=1; i<MAXARGS; i++) {
+      argv_1[i] = ecmd->argv[i];
+      if(ecmd->argv[i] == 0)
+        break;
+    }
+    execv(cmd_1, argv_1); // if fails, try /bin
+
+    // then try /bin directory
+    char cmd_2[50] = "/bin/";
+    char *argv_2[MAXARGS];
+    strncat(cmd_2, ecmd->argv[0], min(strlen(ecmd->argv[0]), 50 - strlen(cmd_2)));
+    argv_2[0] = cmd_2;
+    for (int i=1; i<MAXARGS; i++) {
+      argv_2[i] = ecmd->argv[i];
+      if(ecmd->argv[i] == 0)
+        break;
+    }
+    if(execv(cmd_2, argv_2) < 0) 
+      perror("execv cmd_2");
+
     break;
 
   case '>':
