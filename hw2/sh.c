@@ -80,10 +80,10 @@ runcmd(struct cmd *cmd)
       if(ecmd->argv[i] == 0)
         break;
     }
-    execv(cmd_1, argv_1); // if fails, try /bin
+    execv(cmd_1, argv_1); // if fails, try /usr/bin
 
-    // then try /bin directory
-    char cmd_2[50] = "/bin/";
+
+    char cmd_2[50] = "/usr/bin/";
     char *argv_2[MAXARGS];
     strncat(cmd_2, ecmd->argv[0], min(strlen(ecmd->argv[0]), 50 - strlen(cmd_2)));
     argv_2[0] = cmd_2;
@@ -92,8 +92,20 @@ runcmd(struct cmd *cmd)
       if(ecmd->argv[i] == 0)
         break;
     }
-    if(execv(cmd_2, argv_2) < 0) 
-      perror("execv cmd_2");
+    execv(cmd_2, argv_2); // if fails, try /bin
+
+
+    char cmd_3[50] = "/bin/";
+    char *argv_3[MAXARGS];
+    strncat(cmd_3, ecmd->argv[0], min(strlen(ecmd->argv[0]), 50 - strlen(cmd_3)));
+    argv_3[0] = cmd_3;
+    for (int i=1; i<MAXARGS; i++) {
+      argv_3[i] = ecmd->argv[i];
+      if(ecmd->argv[i] == 0)
+        break;
+    }
+    if(execv(cmd_3, argv_3) < 0) 
+      perror("execv cmd_3");
 
     break;
 
@@ -120,8 +132,12 @@ runcmd(struct cmd *cmd)
 
   case '|':
     pcmd = (struct pipecmd*)cmd;
-    fprintf(stderr, "pipe not implemented\n");
+    // fprintf(stderr, "pipe not implemented\n");
     // Your code here ...
+
+    
+
+    runcmd(rcmd->cmd);
     break;
   }    
   _exit(0);
