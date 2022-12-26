@@ -160,3 +160,10 @@ memset(page2kva(page_free_list), 0, PGSIZE);
 ```
 
 After this, we will pass the `check_page_alloc()` check
+
+
+### `pgdir_walk`
+
+We do a physical page table walk is this function. There are only two level (entry of level 2 is page table entry). 
+
+Stuck...

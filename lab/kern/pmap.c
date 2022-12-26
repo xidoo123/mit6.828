@@ -414,7 +414,34 @@ pte_t *
 pgdir_walk(pde_t *pgdir, const void *va, int create)
 {
 	// Fill this function in
-	return NULL;
+
+	// we have virtual address
+	// cprintf("[?] %x\n", va);
+	uint32_t Page_Directory_Index = PDX(va);
+	uint32_t Page_Table_Index = PDX(va);
+	uint32_t Offset_In_PTE = PGOFF(va);
+
+	// level 2 page table not exist
+	if (pgdir[Page_Directory_Index] == 0) {
+		if (create == 0)
+			return NULL;
+		
+		// allocate a new physical page to be a page table
+		struct PageInfo *new_page = page_alloc(1);
+		// cprintf("[??] %x\n", new_page);
+		if (new_page == 0)	// page allocate fail
+			return NULL;
+		
+		// lab/kern/entrypgdir.c
+		// connect level 1 page table with this new level 2 page table
+		pgdir[Page_Directory_Index] = page2pa(new_page) | PTE_P | PTE_U |PTE_W;
+		new_page->pp_ref = 1;
+
+	}
+
+	// cprintf("[?] %x, %x\n", pgdir[Page_Directory_Index], PTE_ADDR(pgdir[Page_Directory_Index]));
+	
+	return KADDR(PTE_ADDR(pgdir[Page_Directory_Index])) + Page_Table_Index;
 }
 
 //
@@ -431,7 +458,7 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 static void
 boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm)
 {
-	// Fill this function in
+	// Fill this function in	
 }
 
 //
@@ -481,6 +508,7 @@ struct PageInfo *
 page_lookup(pde_t *pgdir, void *va, pte_t **pte_store)
 {
 	// Fill this function in
+
 	return NULL;
 }
 
