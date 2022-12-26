@@ -127,6 +127,9 @@ runcmd(struct cmd *cmd)
     }
 
     // all these are done in child process, so our parent process will still run smoothly
+
+    // chile inherits open file descriptors from parent, so if fd is close in parent, it's close in child too
+    // but why close fd in child doesn't affect parent???
     runcmd(rcmd->cmd);
     break;
 
@@ -135,9 +138,58 @@ runcmd(struct cmd *cmd)
     // fprintf(stderr, "pipe not implemented\n");
     // Your code here ...
 
-    
+    // Reference: https://tldp.org/LDP/lpg/node11.html
+    // Reference: mit6.828/book-rev11.pdf
 
-    runcmd(rcmd->cmd);
+    int childpid;
+
+    if (pipe(p) < 0) {
+      perror("pipe");
+      _exit(0);
+    }
+    
+    if ((childpid = fork()) == -1) {
+      perror("fork");
+      _exit(0);
+    }
+    
+    if (childpid == 0) {
+      // child process recv from parent
+      
+      // explicitly close out pipe, only use in pipe
+      close(p[1]);
+
+      // close STDIN
+      close(0);
+
+      // duplicate in pipe, substitute original STDIN
+      dup(p[0]);
+
+      // close original in pipe
+      close(p[0]);
+
+      // run right cmd
+      runcmd(pcmd->right);  
+    }
+    else {
+      
+      // parent process
+
+      // explicitly close in pipe, only use out pipe
+      close(p[0]);
+
+      // close STDOUT
+      close(1);
+
+      // duplicate out pipe, substitute original STDOUT
+      dup(p[1]);
+
+      // close original out pip
+      close(p[1]);
+
+      // run left cmd, output something through pipe to child
+      runcmd(pcmd->left);
+    }
     break;
   }    
   _exit(0);
