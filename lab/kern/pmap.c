@@ -418,7 +418,7 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 	// we have virtual address
 	// cprintf("[?] %x\n", va);
 	uint32_t Page_Directory_Index = PDX(va);
-	uint32_t Page_Table_Index = PDX(va);
+	uint32_t Page_Table_Index = PTX(va);
 	uint32_t Offset_In_PTE = PGOFF(va);
 
 	// level 2 page table not exist
@@ -427,14 +427,17 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 			return NULL;
 		
 		// allocate a new physical page to be a page table
-		struct PageInfo *new_page = page_alloc(1);
+		struct PageInfo *new_page = page_alloc(ALLOC_ZERO);
 		// cprintf("[??] %x\n", new_page);
 		if (new_page == 0)	// page allocate fail
 			return NULL;
 		
-		// lab/kern/entrypgdir.c
-		// connect level 1 page table with this new level 2 page table
-		pgdir[Page_Directory_Index] = page2pa(new_page) | PTE_P | PTE_U |PTE_W;
+		// set level 1 page table entry to this new level 2 page table
+		// this new page is for level2 PT, so flags are:
+		// 	PTE_P: this page is present
+		//	PTE_U: user process can use this page
+		//	PTE_W: this page can be edit
+		pgdir[Page_Directory_Index] = page2pa(new_page) | PTE_P | PTE_U | PTE_W;
 		new_page->pp_ref = 1;
 
 	}
@@ -459,6 +462,31 @@ static void
 boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm)
 {
 	// Fill this function in	
+	if (size % PGSIZE != 0)
+		panic("boot_map_region: size is not a multiple of PGSIZE\n");
+	
+	if (va % PGSIZE != 0 || pa % PGSIZE != 0)
+		panic("boot_map_region: va or pa is not page-aligned\n");
+
+
+	// set all pages related
+	for (int i=0; i<size/PGSIZE; i++) {
+
+		// find the real PTE for va
+		// create on walk, if not present
+		pte_t* pte = pgdir_walk(pgdir, (void *)va, 1);	
+
+		// set the real PTE to pa, zero out least 12 bits
+		*pte = PTE_ADDR(pa)
+		
+		// set flags
+		// present, user can use
+		// PTE_W is not set cuz "This function is only intended to set up the ``static'' mappings
+		// above UTOP", which is only R for both user and kernel.
+		*pte |= (PTE_P | PTE_U);
+
+	}
+	
 }
 
 //

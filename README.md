@@ -164,6 +164,23 @@ After this, we will pass the `check_page_alloc()` check
 
 ### `pgdir_walk`
 
-We do a physical page table walk is this function. There are only two level (entry of level 2 is page table entry). 
+We do a physical page table walk is this function. There are only two level.
 
-Stuck...
+For level 1 page table, the entry stores the physical address of level 2 page table. If level 2 page table doesn't exist, allocate a new physical page to it and set the corresponding level 1 page table entry.
+
+For level 2 page table, the entry stores the real PTEs for memory translation. In this function, we need to get the pointer to the real PTE of `va`.   
+
+The translation part is not done by us, but by mmu
+
+
+```c
+pgdir[Page_Directory_Index] -> the physical address of level 2 page table
+PTE_ADDR(pgdir[Page_Directory_Index]) -> zero out the least 12 bits, not nessesary(?)
+KADDR(PTE_ADDR(pgdir[Page_Directory_Index])) -> the virtual address of level 2 page table
+KADDR(PTE_ADDR(pgdir[Page_Directory_Index])) + Page_Table_Index; -> the PTE of va in level 2 page table 
+```
+
+
+### `boot_map_region`
+
+In this function we need to map some region of va to pa, as in: connect va with pa by page table.
