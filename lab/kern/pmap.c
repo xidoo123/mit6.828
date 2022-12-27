@@ -522,6 +522,28 @@ int
 page_insert(pde_t *pgdir, struct PageInfo *pp, void *va, int perm)
 {
 	// Fill this function in
+
+	// find the real PTE for va
+	// create on walk, if not present
+	pte_t* pte = pgdir_walk(pgdir, (void *)va, 1);	
+
+	if (pte == 0)
+		return -E_NO_MEM;
+
+	// already have a page
+	// remove it and invalidate tlb
+	if (*pte != 0) 
+		page_remove(pgdir, va);
+
+	// set the real PTE to pa, zero out least 12 bits
+	*pte = PTE_ADDR(page2pa(pp));
+	
+	// set flags
+	*pte |= (perm | PTE_P);
+
+	// increment ref cnt
+	pp->pp_ref++;
+
 	return 0;
 }
 

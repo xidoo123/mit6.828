@@ -207,3 +207,8 @@ The pg table entry corresponding to 'va' should be set to 0, which means the lev
 *pte = 0;
 **pte_store = 0;
 ```
+
+
+### `page_insert`
+
+same as `boot_map_region`, but here we make use of `PageInfo` structure
