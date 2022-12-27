@@ -203,12 +203,8 @@ pa2page(PTE_ADDR(*pte)) -> convert pa to page
 
 The pg table entry corresponding to 'va' should be set to 0, which means the level2 page should be zero out
 
-```c
-*pte = 0;
-**pte_store = 0;
-```
-
-
 ### `page_insert`
 
-same as `boot_map_region`, but here we make use of `PageInfo` structure
+same as `boot_map_region`, but here we make use of `PageInfo` structure.
+
+Corner case happens in test, where we `insert_page` for identical parameters two times. In this case, the second `insert_page` will actually `remove_page`, making `pp_ref=0` and then `page_free` the page, result in inconsistence in free list. 

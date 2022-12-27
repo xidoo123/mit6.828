@@ -442,9 +442,14 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 
 	}
 
-	// cprintf("[?] %x, %x\n", pgdir[Page_Directory_Index], PTE_ADDR(pgdir[Page_Directory_Index]));
+	// cprintf("[?] %x\n", KADDR(PTE_ADDR(pgdir[Page_Directory_Index])));
 	
-	return KADDR(PTE_ADDR(pgdir[Page_Directory_Index])) + Page_Table_Index;
+	// remember each entry is 4 byte long
+	// so we need to convert type to pte_t * in order to add 4 on address each time
+	// instead of add 1
+	pte_t *p = (pte_t *) KADDR(PTE_ADDR(pgdir[Page_Directory_Index]));
+
+	return &p[Page_Table_Index];
 }
 
 //
@@ -525,15 +530,20 @@ page_insert(pde_t *pgdir, struct PageInfo *pp, void *va, int perm)
 
 	// find the real PTE for va
 	// create on walk, if not present
-	pte_t* pte = pgdir_walk(pgdir, (void *)va, 1);	
+	pte_t* pte = pgdir_walk(pgdir, va, 1);	
 
 	if (pte == 0)
 		return -E_NO_MEM;
 
 	// already have a page
 	// remove it and invalidate tlb
-	if (*pte != 0) 
-		page_remove(pgdir, va);
+	if (*pte != 0) {
+		// corner case
+		if (page2pa(pp) == PTE_ADDR(*pte))
+			pp->pp_ref--;	// keep pp_ref consistent, in the meantime change perm potentially.
+		else
+			page_remove(pgdir, va);
+	}
 
 	// set the real PTE to pa, zero out least 12 bits
 	*pte = PTE_ADDR(page2pa(pp));
@@ -566,6 +576,9 @@ page_lookup(pde_t *pgdir, void *va, pte_t **pte_store)
 	// do a page table walk to find real PTE
 	pte_t * pte = pgdir_walk(pgdir, va, 0);
 
+	cprintf("[?] In page_lookup\n");
+	cprintf("[?] %x\n", pte);
+
 	// if not present, return NULL
 	if (pte == 0 || *pte == 0)
 		return NULL;
@@ -597,18 +610,22 @@ page_remove(pde_t *pgdir, void *va)
 {
 	// Fill this function in
 
-	pte_t **pte_store = NULL;
-	struct PageInfo * pp = page_lookup(pgdir, va, pte_store);
+	// pte_t *tmp;
+	pte_t *pte_store = NULL;
+	struct PageInfo * pp = page_lookup(pgdir, va, &pte_store);
 
 	// if not present, silently return
 	if (pp == NULL)
 		return;
-	
+
 	// decrement ref count, and if reaches 0, free it
 	page_decref(pp);
 
 	// null the real PTE pointer 
-	**pte_store = 0;
+	*pte_store = 0;
+
+	// cprintf("[?] In page_remove\n");
+	// cprintf("[?] *pte_store:%x, **pte_store:%x\n", *pte_store, **pte_store);
 
 	// tlb invalidate
 	tlb_invalidate(pgdir, va);
@@ -838,6 +855,10 @@ check_va2pa(pde_t *pgdir, uintptr_t va)
 	if (!(*pgdir & PTE_P))
 		return ~0;
 	p = (pte_t*) KADDR(PTE_ADDR(*pgdir));
+
+	cprintf("[?] In check_va2pa\n");
+	cprintf("[?] *pte_store:%x, **pte_store:%x\n", &p[PTX(va)], p[PTX(va)]);
+
 	if (!(p[PTX(va)] & PTE_P))
 		return ~0;
 	return PTE_ADDR(p[PTX(va)]);
@@ -937,7 +958,9 @@ check_page(void)
 	assert((pp = page_alloc(0)) && pp == pp2);
 
 	// unmapping pp1 at 0 should keep pp1 at PGSIZE
+	cprintf("[?] wrong here\n");
 	page_remove(kern_pgdir, 0x0);
+	cprintf("[?] %d, %x, %x\n", pp1->pp_ref, check_va2pa(kern_pgdir, 0x0), page2pa(pp1));
 	assert(check_va2pa(kern_pgdir, 0x0) == ~0);
 	assert(check_va2pa(kern_pgdir, PGSIZE) == page2pa(pp1));
 	assert(pp1->pp_ref == 1);
