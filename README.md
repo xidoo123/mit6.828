@@ -198,3 +198,12 @@ This function is only used by `page_remove` to check if page is present.
 PTE_ADDR(*pte)  -> zero out least 12 bits, including flags, to get PPN (check book-rev11.pdf page 30)
 pa2page(PTE_ADDR(*pte)) -> convert pa to page
 ```
+
+### `page_remove`
+
+The pg table entry corresponding to 'va' should be set to 0, which means the level2 page should be zero out
+
+```c
+*pte = 0;
+**pte_store = 0;
+```

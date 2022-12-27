@@ -545,7 +545,7 @@ page_lookup(pde_t *pgdir, void *va, pte_t **pte_store)
 	pte_t * pte = pgdir_walk(pgdir, va, 0);
 
 	// if not present, return NULL
-	if (pte == 0)
+	if (pte == 0 || *pte == 0)
 		return NULL;
 	
 	// store pte
@@ -574,6 +574,23 @@ void
 page_remove(pde_t *pgdir, void *va)
 {
 	// Fill this function in
+
+	pte_t **pte_store = NULL;
+	struct PageInfo * pp = page_lookup(pgdir, va, pte_store);
+
+	// if not present, silently return
+	if (pp == NULL)
+		return;
+	
+	// decrement ref count, and if reaches 0, free it
+	page_decref(pp);
+
+	// null the real PTE pointer 
+	**pte_store = 0;
+
+	// tlb invalidate
+	tlb_invalidate(pgdir, va);
+
 }
 
 //
