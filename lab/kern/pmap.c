@@ -476,17 +476,21 @@ boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm
 		// create on walk, if not present
 		pte_t* pte = pgdir_walk(pgdir, (void *)va, 1);	
 
+		if (pte == 0)
+			panic("boot_map_region: pgdir_walk return NULL\n");
+
 		// set the real PTE to pa, zero out least 12 bits
-		*pte = PTE_ADDR(pa)
+		*pte = PTE_ADDR(pa);
 		
 		// set flags
-		// present, user can use
-		// PTE_W is not set cuz "This function is only intended to set up the ``static'' mappings
-		// above UTOP", which is only R for both user and kernel.
-		*pte |= (PTE_P | PTE_U);
+		*pte |= (perm | PTE_P);
+
+		// deal with next page
+		va += PGSIZE;
+		pa += PGSIZE;
 
 	}
-	
+
 }
 
 //
@@ -537,7 +541,18 @@ page_lookup(pde_t *pgdir, void *va, pte_t **pte_store)
 {
 	// Fill this function in
 
-	return NULL;
+	// do a page table walk to find real PTE
+	pte_t * pte = pgdir_walk(pgdir, va, 0);
+
+	// if not present, return NULL
+	if (pte == 0)
+		return NULL;
+	
+	// store pte
+	if (pte_store != 0)
+		*pte_store = pte;
+
+	return pa2page(PTE_ADDR(*pte)) ;
 }
 
 //

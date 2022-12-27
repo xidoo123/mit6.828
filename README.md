@@ -184,3 +184,17 @@ KADDR(PTE_ADDR(pgdir[Page_Directory_Index])) + Page_Table_Index; -> the PTE of v
 ### `boot_map_region`
 
 In this function we need to map some region of va to pa, as in: connect va with pa by page table.
+
+
+### `page_lookup`
+
+Return the page info structure of the virtual address `va`. So we do a page table walk to find the real PTE for `va`, to translate `va` to pa, then convert pa to page info address by `pa2page`.
+
+Why do we do the translation instead of just calling `PADDR`?
+
+This function is only used by `page_remove` to check if page is present.
+
+```c
+PTE_ADDR(*pte)  -> zero out least 12 bits, including flags, to get PPN (check book-rev11.pdf page 30)
+pa2page(PTE_ADDR(*pte)) -> convert pa to page
+```
