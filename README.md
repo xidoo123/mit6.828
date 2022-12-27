@@ -58,6 +58,45 @@ LD script sytax: https://users.informatik.haw-hamburg.de/~krabat/FH-Labor/gnupro
 
 ## lab2
 
+Result:
+
+```
+x1do0@ubuntu:~/mit6.828/lab$ make grade
+make clean
+make[1]: Entering directory '/home/x1do0/mit6.828/lab'
+rm -rf obj .gdbinit jos.in qemu.log
+make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
+./grade-lab2
+make[1]: Entering directory '/home/x1do0/mit6.828/lab'
++ as kern/entry.S
++ cc kern/entrypgdir.c
++ cc kern/init.c
++ cc kern/console.c
++ cc kern/monitor.c
++ cc kern/pmap.c
++ cc kern/kclock.c
++ cc kern/printf.c
++ cc kern/kdebug.c
++ cc lib/printfmt.c
++ cc lib/readline.c
++ cc lib/string.c
++ ld obj/kern/kernel
+ld: warning: section `.bss' type changed to PROGBITS
++ as boot/boot.S
++ cc -Os boot/main.c
++ ld boot/boot
+boot block is 390 bytes (max 510)
++ mk obj/kern/kernel.img
+make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
+running JOS: (0.7s)
+  Physical page allocator: OK
+  Page management: OK
+  Kernel page directory: OK
+  Page management 2: OK
+Score: 70/70
+```
+
+
 ### `boot_alloc`
 
 we can print out what exactly the magic `end` are
