@@ -208,3 +208,5 @@ The pg table entry corresponding to 'va' should be set to 0, which means the lev
 same as `boot_map_region`, but here we make use of `PageInfo` structure.
 
 Corner case happens in test, where we `insert_page` for identical parameters two times. In this case, the second `insert_page` will actually `remove_page`, making `pp_ref=0` and then `page_free` the page, result in inconsistence in free list. 
+
+At this time, Part 1: Physical Page Management finished.

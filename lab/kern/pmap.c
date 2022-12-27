@@ -576,8 +576,8 @@ page_lookup(pde_t *pgdir, void *va, pte_t **pte_store)
 	// do a page table walk to find real PTE
 	pte_t * pte = pgdir_walk(pgdir, va, 0);
 
-	cprintf("[?] In page_lookup\n");
-	cprintf("[?] %x\n", pte);
+	// cprintf("[?] In page_lookup\n");
+	// cprintf("[?] %x\n", pte);
 
 	// if not present, return NULL
 	if (pte == 0 || *pte == 0)
@@ -856,8 +856,8 @@ check_va2pa(pde_t *pgdir, uintptr_t va)
 		return ~0;
 	p = (pte_t*) KADDR(PTE_ADDR(*pgdir));
 
-	cprintf("[?] In check_va2pa\n");
-	cprintf("[?] *pte_store:%x, **pte_store:%x\n", &p[PTX(va)], p[PTX(va)]);
+	// cprintf("[?] In check_va2pa\n");
+	// cprintf("[?] *pte_store:%x, **pte_store:%x\n", &p[PTX(va)], p[PTX(va)]);
 
 	if (!(p[PTX(va)] & PTE_P))
 		return ~0;
@@ -958,9 +958,7 @@ check_page(void)
 	assert((pp = page_alloc(0)) && pp == pp2);
 
 	// unmapping pp1 at 0 should keep pp1 at PGSIZE
-	cprintf("[?] wrong here\n");
 	page_remove(kern_pgdir, 0x0);
-	cprintf("[?] %d, %x, %x\n", pp1->pp_ref, check_va2pa(kern_pgdir, 0x0), page2pa(pp1));
 	assert(check_va2pa(kern_pgdir, 0x0) == ~0);
 	assert(check_va2pa(kern_pgdir, PGSIZE) == page2pa(pp1));
 	assert(pp1->pp_ref == 1);
