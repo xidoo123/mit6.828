@@ -12,3 +12,43 @@ sysproc.c:83:sys_uptime(void)
 user.h:25:int uptime(void);
 usys.S:31:SYSCALL(uptime)
 ```
+
+Tick time on my computer seems to be bit slower, so I changed `main` in alarmtest.c to achieve better results.
+
+```c
+main(int argc, char *argv[])
+{
+  int i;
+  printf(1, "alarmtest starting\n");
+
+  alarm(10, periodic);
+  for(i = 0; i < 25*500000*50; i++){
+    if((i % 2500000) == 0)
+      write(2, ".", 1);
+  }
+  exit();
+}
+```
+
+Result:
+
+```
+$ alarmtest
+alarmtest starting
+..............alarm!
+..................alarm!
+..................alarm!
+..................alarm!
+................alarm!
+...................alarm!
+..............alarm!
+......................alarm!
+...................alarm!
+.........alarm!
+..............alarm!
+........................alarm!
+..................alarm!
+...............alarm!
+............alarm!
+$
+```

@@ -33,12 +33,22 @@ idtinit(void)
   lidt(idt, sizeof(idt));
 }
 
+
+// this should be only used here, for hw4 alarm implementation
+void
+push(uint* _esp, uint content)
+{
+  *_esp -= 4;
+  *(uint *)(*_esp) = content;
+}
+
 //PAGEBREAK: 41
 void
 trap(struct trapframe *tf)
 {
 
   char* mem = 0;
+  // struct trapframe current_tf;
 
   if(tf->trapno == T_SYSCALL){
     if(myproc()->killed)
@@ -59,6 +69,39 @@ trap(struct trapframe *tf)
       release(&tickslock);
     }
     lapiceoi();
+
+    // ticks
+    if(myproc() != 0 && (tf->cs & 3) == 3) {
+
+      myproc()->tickcnt += 1;
+    
+      if(myproc()->tickcnt == myproc()->alarmticks) {
+        
+        // cprintf("[?] alarm cnt hit\n");
+
+        myproc()->tickcnt = 0;
+
+        // save context
+        // memcpy(current_tf, myproc()->tf, sizeof(current_tf));
+        // the context should be stored on stack
+        // so we push reg in context to stack
+        // here we only need to handle eip to pop back after executing handle
+        // just a basic implementation
+        push(&(tf->esp), tf->eip);
+
+        // execute handle
+        // myproc()->alarmhandler();
+        // now we are in kernel mode, we should not directly execute handle in user space
+        // let trapframe do this
+        tf->eip = (uint) myproc()->alarmhandler;
+
+        // recover context
+        // memcpy(myproc()->tf, current_tf, sizeof(current_tf));
+        // this is also done by trapframe
+        // the old eip stored on stack will be poped back to eip
+      }
+
+    }
     break;
   case T_IRQ0 + IRQ_IDE:
     ideintr();
