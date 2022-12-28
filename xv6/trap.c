@@ -13,6 +13,7 @@ struct gatedesc idt[256];
 extern uint vectors[];  // in vectors.S: array of 256 entry pointers
 struct spinlock tickslock;
 uint ticks;
+extern int mappages(pde_t *pgdir, void *va, uint size, uint pa, int perm);
 
 void
 tvinit(void)
@@ -36,6 +37,9 @@ idtinit(void)
 void
 trap(struct trapframe *tf)
 {
+
+  char* mem = 0;
+
   if(tf->trapno == T_SYSCALL){
     if(myproc()->killed)
       exit();
@@ -77,7 +81,20 @@ trap(struct trapframe *tf)
             cpuid(), tf->cs, tf->eip);
     lapiceoi();
     break;
-
+  case T_PGFLT:
+    // cprintf("[?] %x\n", (char *)PGROUNDDOWN(rcr2()));
+    mem = kalloc();
+    if(mem == 0){
+      cprintf("trap lazy allocation out of memory\n");
+      return;
+    }
+    if(mappages(myproc()->pgdir, (char *)PGROUNDDOWN(rcr2()), PGSIZE, V2P(mem), PTE_W|PTE_U) < 0){
+      cprintf("trap lazy allocation out of memory (2)\n");
+      // kfree(mem);
+      return;
+    }
+    // lapiceoi();
+    break;
   //PAGEBREAK: 13
   default:
     if(myproc() == 0 || (tf->cs&3) == 0){
