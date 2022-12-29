@@ -248,4 +248,49 @@ same as `boot_map_region`, but here we make use of `PageInfo` structure.
 
 Corner case happens in test, where we `insert_page` for identical parameters two times. In this case, the second `insert_page` will actually `remove_page`, making `pp_ref=0` and then `page_free` the page, result in inconsistence in free list. 
 
-At this time, Part 1: Physical Page Management finished.
+
+## lab 3
+
+For the first part, you can debug whether the content in ELF is indeed copied to addresses you want
+
+```
+[00000000] new env 00001000
+[?] copy 0x3d14 bytes at 200000
+[?] copy 0xfd4 bytes at 800020
+[?] copy 0x4 bytes at 801000
+[?] load entry point: 800020
+[?] try to execute at entry point: 800020
+```
+
+Since we haven't written any code to deal with int instruction, gdb will stuck at here, indicating that the first part is done, as in we mananed to enter user space after `iret`. 
+
+```
+=> 0xf0102f66 <env_pop_tf+11>:  pop    %ds
+0xf0102f66      508             asm volatile(
+(gdb)
+=> 0xf0102f67 <env_pop_tf+12>:  add    $0x8,%esp
+0xf0102f67      508             asm volatile(
+(gdb)
+=> 0xf0102f6a <env_pop_tf+15>:  iret
+0xf0102f6a      508             asm volatile(
+(gdb)
+=> 0x800020:    cmp    $0xeebfe000,%esp
+0x00800020 in ?? ()
+(gdb) x/xi 800a1c
+Invalid number "800a1c".
+(gdb) x/xi 0x800a1c
+   0x800a1c:    int    $0x30
+(gdb) b *0x800a1c
+Breakpoint 3 at 0x800a1c
+(gdb) c
+Continuing.
+=> 0x800a1c:    int    $0x30
+
+Breakpoint 3, 0x00800a1c in ?? ()
+(gdb) si
+=> 0x800a1c:    int    $0x30
+
+Breakpoint 3, 0x00800a1c in ?? ()
+(gdb)
+```
+
