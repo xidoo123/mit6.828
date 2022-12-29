@@ -340,3 +340,10 @@ faultwrite: OK (1.9s)
 faultwritekernel: OK (2.0s)
     (Old jos.out.faultwritekernel failure log removed)
 ```
+
+As mentioned in handin, just open a JOS monitor when there is a breakpoint exception. 
+
+```
+breakpoint: OK (2.1s)
+    (Old jos.out.breakpoint failure log removed)
+```
