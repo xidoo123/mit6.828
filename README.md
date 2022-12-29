@@ -319,75 +319,6 @@ Some exceptions contains a error code pushing. When there is a error code, we ne
 part a finished, result:
 
 ```
-x1do0@ubuntu:~/mit6.828/lab$ make grade
-make clean
-make[1]: Entering directory '/home/x1do0/mit6.828/lab'
-rm -rf obj .gdbinit jos.in qemu.log
-make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
-./grade-lab3
-make[1]: Entering directory '/home/x1do0/mit6.828/lab'
-+ as kern/entry.S
-+ cc kern/entrypgdir.c
-+ cc kern/init.c
-+ cc kern/console.c
-+ cc kern/monitor.c
-+ cc kern/pmap.c
-+ cc kern/env.c
-+ cc kern/kclock.c
-+ cc kern/printf.c
-+ cc kern/trap.c
-+ as kern/trapentry.S
-+ cc kern/syscall.c
-+ cc kern/kdebug.c
-+ cc lib/printfmt.c
-+ cc lib/readline.c
-+ cc lib/string.c
-+ cc[USER] lib/console.c
-+ cc[USER] lib/libmain.c
-+ cc[USER] lib/exit.c
-+ cc[USER] lib/panic.c
-+ cc[USER] lib/printf.c
-+ cc[USER] lib/printfmt.c
-+ cc[USER] lib/readline.c
-+ cc[USER] lib/string.c
-+ cc[USER] lib/syscall.c
-+ ar obj/lib/libjos.a
-ar: creating obj/lib/libjos.a
-+ cc[USER] user/hello.c
-+ as[USER] lib/entry.S
-+ ld obj/user/hello
-+ cc[USER] user/buggyhello.c
-+ ld obj/user/buggyhello
-+ cc[USER] user/buggyhello2.c
-+ ld obj/user/buggyhello2
-+ cc[USER] user/evilhello.c
-+ ld obj/user/evilhello
-+ cc[USER] user/testbss.c
-+ ld obj/user/testbss
-+ cc[USER] user/divzero.c
-+ ld obj/user/divzero
-+ cc[USER] user/breakpoint.c
-+ ld obj/user/breakpoint
-+ cc[USER] user/softint.c
-+ ld obj/user/softint
-+ cc[USER] user/badsegment.c
-+ ld obj/user/badsegment
-+ cc[USER] user/faultread.c
-+ ld obj/user/faultread
-+ cc[USER] user/faultreadkernel.c
-+ ld obj/user/faultreadkernel
-+ cc[USER] user/faultwrite.c
-+ ld obj/user/faultwrite
-+ cc[USER] user/faultwritekernel.c
-+ ld obj/user/faultwritekernel
-+ ld obj/kern/kernel
-ld: warning: section `.bss' type changed to PROGBITS
-+ as boot/boot.S
-+ cc -Os boot/main.c
-+ ld boot/boot
-boot block is 390 bytes (max 510)
-+ mk obj/kern/kernel.img
-make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
 divzero: OK (1.2s)
     (Old jos.out.divzero failure log removed)
 softint: OK (1.0s)
@@ -395,4 +326,17 @@ softint: OK (1.0s)
 badsegment: OK (1.0s)
     (Old jos.out.badsegment failure log removed)
 Part A score: 30/30
+```
+
+after handling page fault, as in dispatch to `page_fault_handler()`, these tests should pass.
+
+```
+faultread: OK (0.9s)
+    (Old jos.out.faultread failure log removed)
+faultreadkernel: OK (1.1s)
+    (Old jos.out.faultreadkernel failure log removed)
+faultwrite: OK (1.9s)
+    (Old jos.out.faultwrite failure log removed)
+faultwritekernel: OK (2.0s)
+    (Old jos.out.faultwritekernel failure log removed)
 ```
