@@ -361,3 +361,116 @@ hello
 hello: OK (1.0s)
     (Old jos.out.hello failure log removed)
 ```
+
+...
+
+after finishing all these, we will pass all the check in this lab
+
+```
+boot block is 390 bytes (max 510)
++ mk obj/kern/kernel.img
+make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
+divzero: OK (1.3s)
+softint: OK (1.0s)
+badsegment: OK (0.9s)
+Part A score: 30/30
+
+faultread: OK (2.1s)
+faultreadkernel: OK (0.9s)
+faultwrite: OK (2.1s)
+faultwritekernel: OK (1.1s)
+breakpoint: OK (2.0s)
+testbss: OK (1.9s)
+hello: OK (1.1s)
+buggyhello: OK (1.9s)
+    (Old jos.out.buggyhello failure log removed)
+buggyhello2: OK (1.1s)
+    (Old jos.out.buggyhello2 failure log removed)
+evilhello: OK (1.9s)
+    (Old jos.out.evilhello failure log removed)
+Part B score: 50/50
+
+Score: 80/80
+```
+
+There is a question left in handin in the end. We will hit a page fault in kernel when type `backtrace`, but if we type a second time, kernel will go smoothly this time. Why? 
+
+```
+x1do0@ubuntu:~/mit6.828/lab$ make run-breakpoint
+make[1]: Entering directory '/home/x1do0/mit6.828/lab'
++ cc kern/init.c
++ ld obj/kern/kernel
+ld: warning: section `.bss' type changed to PROGBITS
++ mk obj/kern/kernel.img
+make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::26000 -D qemu.log  -nographic
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K
+check_page_free_list() succeeded!
+check_page_alloc() succeeded!
+check_page() succeeded!
+check_kern_pgdir() succeeded!
+check_page_free_list() succeeded!
+check_page_installed_pgdir() succeeded!
+[00000000] new env 00001000
+Incoming TRAP frame at 0xefffffbc
+Incoming TRAP frame at 0xefffffbc
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+TRAP frame at 0xf01b4000
+  edi  0x00000000
+  esi  0x00000000
+  ebp  0xeebfdfd0
+  oesp 0xefffffdc
+  ebx  0x00000000
+  edx  0x00000000
+  ecx  0x00000000
+  eax  0xeec00000
+  es   0x----0023
+  ds   0x----0023
+  trap 0x00000003 Breakpoint
+  err  0x00000000
+  eip  0x00800037
+  cs   0x----001b
+  flag 0x00000082
+  esp  0xeebfdfd0
+  ss   0x----0023
+K> backtrace
+Stack backtrace:
+  ebp efffff20  eip f010094e  args 00000001 efffff38 f01b4000 00000000 f0172840
+         kern/monitor.c:162: monitor+276
+  ebp efffff90  eip f01037c6  args f01b4000 efffffbc 00000000 00000082 00000000
+         kern/trap.c:195: trap+169
+  ebp efffffb0  eip f01038ce  args efffffbc 00000000 00000000 eebfdfd0 efffffdc
+         kern/syscall.c:69: syscall+0
+  ebp eebfdfd0  eip 00800073  args 00000000 00000000 eebfdff0 00800049 00000000
+         lib/libmain.c:26: libmain+58
+Incoming TRAP frame at 0xeffffe6c
+kernel panic at kern/trap.c:264: page fault in kernel!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> backtrace
+Stack backtrace:
+  ebp effffd90  eip f010094e  args 00000001 effffda8 00000000 effffe34 f0172840
+         kern/monitor.c:162: monitor+276
+  ebp effffe00  eip f01000f2  args 00000000 effffe34 00000108 00000000 effffe6c
+         kern/init.c:0: _panic+82
+  ebp effffe20  eip f01036e9  args f0105d87 00000108 f0105d71 f0103104 f01030d0
+         kern/trap.c:270: page_fault_handler+42
+  ebp effffe40  eip f01037b8  args effffe6c effffe6c 00200010 00000093 00800031
+         kern/trap.c:192: trap+155
+  ebp effffe60  eip f01038ce  args effffe6c 0020356b 00800031 efffff20 effffe8c
+         kern/syscall.c:69: syscall+0
+  ebp efffff20  eip f010094e  args 00000001 efffff38 f01b4000 00000000 f0172840
+         kern/monitor.c:162: monitor+276
+  ebp efffff90  eip f01037c6  args f01b4000 efffffbc 00000000 00000082 00000000
+         kern/trap.c:195: trap+169
+  ebp efffffb0  eip f01038ce  args efffffbc 00000000 00000000 eebfdfd0 efffffdc
+         kern/syscall.c:69: syscall+0
+  ebp eebfdfd0  eip 00800073  args 00000000 00000000 eebfdff0 00800049 00000000
+         lib/libmain.c:26: libmain+58
+Incoming TRAP frame at 0xeffffcdc
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K>
+```

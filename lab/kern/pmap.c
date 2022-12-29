@@ -694,6 +694,34 @@ user_mem_check(struct Env *env, const void *va, size_t len, int perm)
 {
 	// LAB 3: Your code here.
 
+	pte_t* pte;
+
+	// for every page in this region
+	for (void* i=ROUNDDOWN((void *)va, PGSIZE); i<ROUNDUP((void *)(va+len), PGSIZE); i+=PGSIZE) {
+
+		if ((uintptr_t)i >= ULIM) {
+			user_mem_check_addr = (uintptr_t)i;
+			return -E_FAULT;
+		}
+
+		//  get this page
+		pte = pgdir_walk(env->env_pgdir, i, 0);
+
+		if (pte == NULL) {
+			user_mem_check_addr = (uintptr_t)i;
+			return -E_FAULT;
+		}
+
+		// perm wrong
+		if (((uint32_t)(*pte) & perm) != perm) {
+			// if happens at first page, we return va instead of ROUNDDOWN(va, PGSIZE)
+			// just to make it more precise 
+			user_mem_check_addr = i == ROUNDDOWN(va, PGSIZE)? (uintptr_t)va:(uintptr_t)i;
+			return -E_FAULT;
+		}
+
+	}
+
 	return 0;
 }
 
