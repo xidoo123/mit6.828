@@ -347,3 +347,17 @@ As mentioned in handin, just open a JOS monitor when there is a breakpoint excep
 breakpoint: OK (2.1s)
     (Old jos.out.breakpoint failure log removed)
 ```
+
+syscall 
+
+```
+testbss: OK (2.1s)
+    (Old jos.out.testbss failure log removed)
+```
+
+hello
+
+```
+hello: OK (1.0s)
+    (Old jos.out.hello failure log removed)
+```

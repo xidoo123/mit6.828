@@ -84,6 +84,7 @@ trap_init(void)
 	void _T_ALIGN_handler();
 	void _T_MCHK_handler();
 	void _T_SIMDERR_handler();
+	void _T_SYSCALL_handler();
 
 	// SETGATE(gate, istrap, sel, off, dpl);
 	SETGATE(idt[T_DIVIDE], 0, GD_KT, _T_DIVIDE_handler, 0);
@@ -104,6 +105,7 @@ trap_init(void)
 	SETGATE(idt[T_ALIGN], 0, GD_KT, _T_ALIGN_handler, 0);
 	SETGATE(idt[T_MCHK], 0, GD_KT, _T_MCHK_handler, 0);
 	SETGATE(idt[T_SIMDERR], 0, GD_KT, _T_SIMDERR_handler, 0);
+	SETGATE(idt[T_SYSCALL], 0, GD_KT, _T_SYSCALL_handler, 3);
 
 	// Per-CPU setup 
 	trap_init_percpu();
@@ -183,6 +185,7 @@ trap_dispatch(struct Trapframe *tf)
 {
 	// Handle processor exceptions.
 	// LAB 3: Your code here.
+	struct PushRegs* r = &tf->tf_regs;
 
 	switch(tf->tf_trapno) {
 		case (T_PGFLT):
@@ -190,6 +193,10 @@ trap_dispatch(struct Trapframe *tf)
 			break;
 		case (T_BRKPT):
 			monitor(tf);	// open a JOS monitor
+			break;
+		case (T_SYSCALL):
+			// call syscall in kern/syscall.c
+			r->reg_eax = syscall(r->reg_eax, r->reg_edx, r->reg_ecx, r->reg_ebx, r->reg_edi, r->reg_esi);
 			break;
 		default:
 			// Unexpected trap: The user process or the kernel has a bug.

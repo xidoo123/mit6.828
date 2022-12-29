@@ -10,32 +10,29 @@ check_kern_pgdir() succeeded!
 check_page_free_list() succeeded!
 check_page_installed_pgdir() succeeded!
 [00000000] new env 00001000
-[?] copy 0x3dda bytes at 200000
-[?] copy 0x10ef bytes at 800020
-[?] copy 0x4 bytes at 802000
-[?] load entry point: 800020
-[?] try to execute at entry point: 800020
 Incoming TRAP frame at 0xefffffbc
-TRAP frame at 0xf01b3000
-  edi  0x00000000
-  esi  0x00000000
-  ebp  0xeebfde60
-  oesp 0xefffffdc
+Incoming TRAP frame at 0xefffffbc
+Incoming TRAP frame at 0xeffffe8c
+[00001000] user fault va 00000001 ip f0103f34
+TRAP frame at 0xeffffe8c
+  edi  0x00000002
+  esi  0x00000001
+  ebp  0xefffff00
+  oesp 0xeffffeac
   ebx  0x00000000
-  edx  0xeebfde88
-  ecx  0x0000001f
-  eax  0x00000000
-  es   0x----0023
-  ds   0x----0023
-  trap 0x0000000d General Protection
-  err  0x00000182
-  eip  0x00800ae0
-  cs   0x----001b
-  flag 0x00000092
-  esp  0xeebfde54
-  ss   0x----0023
+  edx  0xefffff64
+  ecx  0x00000073
+  eax  0xf0105e43
+  es   0x----0010
+  ds   0x----0010
+  trap 0x0000000e Page Fault
+  cr2  0x00000001
+  err  0x00000000 [kernel, read, not-present]
+  eip  0xf0103f34
+  cs   0x----0008
+  flag 0x00000002
 [00001000] free env 00001000
 Destroyed the only environment - nothing more to do!
 Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
-qemu: terminating on signal 15 from pid 91369
+qemu: terminating on signal 15 from pid 95675

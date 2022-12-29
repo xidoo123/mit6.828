@@ -387,14 +387,14 @@ load_icode(struct Env *e, uint8_t *binary)
 			// binary is of type uint8_t *, remember not use elf cuz its type is struct Elf*
 			// making elf + ph->p_offset pointing to nowhere
 			memcpy((void *)ph->p_va, binary + ph->p_offset, ph->p_filesz);
-			cprintf("[?] copy 0x%x bytes at %x\n", ph->p_filesz, ph->p_va);
+			// cprintf("[?] copy 0x%x bytes at %x\n", ph->p_filesz, ph->p_va);
 		}
 
 	}
 
 	// load program entry point to eip
 	e->env_tf.tf_eip = elf->e_entry;
-	cprintf("[?] load entry point: %x\n", e->env_tf.tf_eip);
+	// cprintf("[?] load entry point: %x\n", e->env_tf.tf_eip);
 
 	// Now map one page for the program's initial stack
 	// at virtual address USTACKTOP - PGSIZE.
@@ -558,7 +558,7 @@ env_run(struct Env *e)
 	}
 
 	// iret to execute entry point stored in tf_eip
-	cprintf("[?] try to execute at entry point: %x\n", curenv->env_tf.tf_eip);
+	// cprintf("[?] try to execute at entry point: %x\n", curenv->env_tf.tf_eip);
 	env_pop_tf(&curenv->env_tf);
 
 	// panic("env_run not yet implemented");
