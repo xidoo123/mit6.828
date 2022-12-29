@@ -48,8 +48,38 @@
  */
 
 
+TRAPHANDLER_NOEC(_T_DIVIDE_handler, T_DIVIDE)
+TRAPHANDLER_NOEC(_T_DEBUG_handler, T_DEBUG)
+TRAPHANDLER_NOEC(_T_NMI_handler, T_NMI)
+TRAPHANDLER_NOEC(_T_BRKPT_handler, T_BRKPT)
+TRAPHANDLER_NOEC(_T_OFLOW_handler, T_OFLOW)
+TRAPHANDLER_NOEC(_T_BOUND_handler, T_BOUND)
+TRAPHANDLER_NOEC(_T_ILLOP_handler, T_ILLOP)
+TRAPHANDLER_NOEC(_T_DEVICE_handler, T_DEVICE)
+TRAPHANDLER(_T_DBLFLT_handler, T_DBLFLT)
+TRAPHANDLER(_T_TSS_handler, T_TSS)
+TRAPHANDLER(_T_SEGNP_handler, T_SEGNP)
+TRAPHANDLER(_T_STACK_handler, T_STACK)
+TRAPHANDLER(_T_GPFLT_handler, T_GPFLT)
+TRAPHANDLER(_T_PGFLT_handler, T_PGFLT)
+TRAPHANDLER_NOEC(_T_FPERR_handler, T_FPERR)
+TRAPHANDLER(_T_ALIGN_handler, T_ALIGN)
+TRAPHANDLER_NOEC(_T_MCHK_handler, T_MCHK)
+TRAPHANDLER_NOEC(_T_SIMDERR_handler, T_SIMDERR)
+
 
 /*
  * Lab 3: Your code here for _alltraps
  */
 
+_alltraps:
+	pushl %ds
+	pushl %es
+	pushal	/* push all general registers */
+
+	movl $GD_KD, %eax
+	movl %eax, %ds
+	movl %eax, %es
+
+	push %esp
+	call trap

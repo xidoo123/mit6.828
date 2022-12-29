@@ -289,8 +289,110 @@ Continuing.
 Breakpoint 3, 0x00800a1c in ?? ()
 (gdb) si
 => 0x800a1c:    int    $0x30
-
-Breakpoint 3, 0x00800a1c in ?? ()
-(gdb)
+(gdb) info reg
+eax            0x0      0
+ecx            0xd      13
+edx            0xeebfde88       -289415544
+ebx            0x0      0
+esp            0xeebfde54       0xeebfde54
+ebp            0xeebfde60       0xeebfde60
+esi            0x0      0
+edi            0x0      0
+eip            0x800a1c 0x800a1c
+eflags         0x92     [ AF SF ]
+cs             0x1b     27
+ss             0x23     35
+ds             0x23     35
+es             0x23     35
+fs             0x23     35
+gs             0x23     35
 ```
 
+Now we go to exceptions and interrupts part. When there is context switching from user space to kernel space, all the context of user space is stored in *kernel stack*. 
+
+When there is a stack overflow in user app, we can arrange signal frame in *user space stack* and call `sigreturn` to control all the registers in user context. This is called SROP. 
+
+Some exceptions contains a error code pushing. When there is a error code, we need to use `TRAPHANDLER`, otherwise use `TRAPHANDLER_NOEC`
+
+> For certain types of x86 exceptions, in addition to the "standard" five words above, the processor pushes onto the stack another word containing an error code. The page fault exception, number 14, is an important example. See the 80386 manual to determine for which exception numbers the processor pushes an error code, and what the error code means in that case
+
+part a finished, result:
+
+```
+x1do0@ubuntu:~/mit6.828/lab$ make grade
+make clean
+make[1]: Entering directory '/home/x1do0/mit6.828/lab'
+rm -rf obj .gdbinit jos.in qemu.log
+make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
+./grade-lab3
+make[1]: Entering directory '/home/x1do0/mit6.828/lab'
++ as kern/entry.S
++ cc kern/entrypgdir.c
++ cc kern/init.c
++ cc kern/console.c
++ cc kern/monitor.c
++ cc kern/pmap.c
++ cc kern/env.c
++ cc kern/kclock.c
++ cc kern/printf.c
++ cc kern/trap.c
++ as kern/trapentry.S
++ cc kern/syscall.c
++ cc kern/kdebug.c
++ cc lib/printfmt.c
++ cc lib/readline.c
++ cc lib/string.c
++ cc[USER] lib/console.c
++ cc[USER] lib/libmain.c
++ cc[USER] lib/exit.c
++ cc[USER] lib/panic.c
++ cc[USER] lib/printf.c
++ cc[USER] lib/printfmt.c
++ cc[USER] lib/readline.c
++ cc[USER] lib/string.c
++ cc[USER] lib/syscall.c
++ ar obj/lib/libjos.a
+ar: creating obj/lib/libjos.a
++ cc[USER] user/hello.c
++ as[USER] lib/entry.S
++ ld obj/user/hello
++ cc[USER] user/buggyhello.c
++ ld obj/user/buggyhello
++ cc[USER] user/buggyhello2.c
++ ld obj/user/buggyhello2
++ cc[USER] user/evilhello.c
++ ld obj/user/evilhello
++ cc[USER] user/testbss.c
++ ld obj/user/testbss
++ cc[USER] user/divzero.c
++ ld obj/user/divzero
++ cc[USER] user/breakpoint.c
++ ld obj/user/breakpoint
++ cc[USER] user/softint.c
++ ld obj/user/softint
++ cc[USER] user/badsegment.c
++ ld obj/user/badsegment
++ cc[USER] user/faultread.c
++ ld obj/user/faultread
++ cc[USER] user/faultreadkernel.c
++ ld obj/user/faultreadkernel
++ cc[USER] user/faultwrite.c
++ ld obj/user/faultwrite
++ cc[USER] user/faultwritekernel.c
++ ld obj/user/faultwritekernel
++ ld obj/kern/kernel
+ld: warning: section `.bss' type changed to PROGBITS
++ as boot/boot.S
++ cc -Os boot/main.c
++ ld boot/boot
+boot block is 390 bytes (max 510)
++ mk obj/kern/kernel.img
+make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
+divzero: OK (1.2s)
+    (Old jos.out.divzero failure log removed)
+softint: OK (1.0s)
+    (Old jos.out.softint failure log removed)
+badsegment: OK (1.0s)
+    (Old jos.out.badsegment failure log removed)
+Part A score: 30/30
+```

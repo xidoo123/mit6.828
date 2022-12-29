@@ -66,6 +66,45 @@ trap_init(void)
 
 	// LAB 3: Your code here.
 
+	void _T_DIVIDE_handler();
+	void _T_DEBUG_handler();
+	void _T_NMI_handler();
+	void _T_BRKPT_handler();
+	void _T_OFLOW_handler();
+	void _T_BOUND_handler();
+	void _T_ILLOP_handler();
+	void _T_DEVICE_handler();
+	void _T_DBLFLT_handler();
+	void _T_TSS_handler();
+	void _T_SEGNP_handler();
+	void _T_STACK_handler();
+	void _T_GPFLT_handler();
+	void _T_PGFLT_handler();
+	void _T_FPERR_handler();
+	void _T_ALIGN_handler();
+	void _T_MCHK_handler();
+	void _T_SIMDERR_handler();
+
+	// SETGATE(gate, istrap, sel, off, dpl);
+	SETGATE(idt[T_DIVIDE], 0, GD_KT, _T_DIVIDE_handler, 0);
+	SETGATE(idt[T_DEBUG], 0, GD_KT, _T_DEBUG_handler, 0);
+	SETGATE(idt[T_NMI], 0, GD_KT, _T_NMI_handler, 0);
+	SETGATE(idt[T_BRKPT], 0, GD_KT, _T_BRKPT_handler, 3);
+	SETGATE(idt[T_OFLOW], 0, GD_KT, _T_OFLOW_handler, 0);
+	SETGATE(idt[T_BOUND], 0, GD_KT, _T_BOUND_handler, 0);
+	SETGATE(idt[T_ILLOP], 0, GD_KT, _T_ILLOP_handler, 0);
+	SETGATE(idt[T_DEVICE], 0, GD_KT, _T_DEVICE_handler, 0);
+	SETGATE(idt[T_DBLFLT], 0, GD_KT, _T_DBLFLT_handler, 0);
+	SETGATE(idt[T_TSS], 0, GD_KT, _T_TSS_handler, 0);
+	SETGATE(idt[T_SEGNP], 0, GD_KT, _T_SEGNP_handler, 0);
+	SETGATE(idt[T_STACK], 0, GD_KT, _T_STACK_handler, 0);
+	SETGATE(idt[T_GPFLT], 0, GD_KT, _T_GPFLT_handler, 0);
+	SETGATE(idt[T_PGFLT], 0, GD_KT, _T_PGFLT_handler, 0);
+	SETGATE(idt[T_FPERR], 0, GD_KT, _T_FPERR_handler, 0);
+	SETGATE(idt[T_ALIGN], 0, GD_KT, _T_ALIGN_handler, 0);
+	SETGATE(idt[T_MCHK], 0, GD_KT, _T_MCHK_handler, 0);
+	SETGATE(idt[T_SIMDERR], 0, GD_KT, _T_SIMDERR_handler, 0);
+
 	// Per-CPU setup 
 	trap_init_percpu();
 }
