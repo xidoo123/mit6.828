@@ -1,6 +1,6 @@
 # Homework6
 
-Missing key due to race condition between two threads, as in when A thread and B thread do  `insert` in the meantime, consistence of the link list will break. Original result:
+Missing key due to race condition between two threads, as in when A thread and B thread do  `insert` in the meantime, consistence of the link list will break. Check the slides for more explaination. Original result:
 
 ```
 x1do0@ubuntu:~/mit6.828/hw6$  gcc -g -O2 ph.c -pthread
