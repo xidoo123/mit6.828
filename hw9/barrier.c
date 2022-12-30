@@ -27,7 +27,29 @@ barrier_init(void)
 static void 
 barrier()
 {
-  bstate.round++;
+  
+  // all the threads use the same lock
+  pthread_mutex_lock(&bstate.barrier_mutex);
+  bstate.nthread++;
+
+  if (bstate.nthread == nthread) {
+    // this is the last thread
+    // we can finnaly do round inc
+    // so that all threads are in the same pace
+    bstate.round++;
+
+    // all the threads lets go
+    bstate.nthread = 0;
+    pthread_cond_broadcast(&bstate.barrier_cond);
+  }
+  else {
+    // we still have other threads
+    // just let current thread wait here
+    pthread_cond_wait(&bstate.barrier_cond, &bstate.barrier_mutex);
+  }
+
+  pthread_mutex_unlock(&bstate.barrier_mutex);
+
 }
 
 static void *
