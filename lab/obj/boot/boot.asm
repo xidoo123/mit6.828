@@ -340,6 +340,7 @@ bootmain(void)
     7d18:	56                   	push   %esi
     7d19:	53                   	push   %ebx
 	struct Proghdr *ph, *eph;
+	int i;
 
 	// read 1st page off disk
 	readseg((uint32_t) ELFHDR, SECTSIZE*8, 0);
@@ -353,7 +354,7 @@ bootmain(void)
     7d2b:	83 c4 0c             	add    $0xc,%esp
     7d2e:	81 3d 00 00 01 00 7f 	cmpl   $0x464c457f,0x10000
     7d35:	45 4c 46 
-    7d38:	75 37                	jne    7d71 <bootmain+0x5c>
+    7d38:	75 4f                	jne    7d89 <bootmain+0x74>
 		goto bad;
 
 	// load each program segment (ignores ph flags)
@@ -371,50 +372,59 @@ bootmain(void)
 	eph = ph + ELFHDR->e_phnum;
     7d4c:	c1 e6 05             	shl    $0x5,%esi
     7d4f:	01 de                	add    %ebx,%esi
-	for (; ph < eph; ph++)
+	for (; ph < eph; ph++) {
     7d51:	39 f3                	cmp    %esi,%ebx
-    7d53:	73 16                	jae    7d6b <bootmain+0x56>
+    7d53:	73 2e                	jae    7d83 <bootmain+0x6e>
 		// p_pa is the load address of this segment (as well
 		// as the physical address)
 		readseg(ph->p_pa, ph->p_memsz, ph->p_offset);
     7d55:	ff 73 04             	pushl  0x4(%ebx)
     7d58:	ff 73 14             	pushl  0x14(%ebx)
-		goto bad;
-
-	// load each program segment (ignores ph flags)
-	ph = (struct Proghdr *) ((uint8_t *) ELFHDR + ELFHDR->e_phoff);
+    7d5b:	ff 73 0c             	pushl  0xc(%ebx)
+    7d5e:	e8 79 ff ff ff       	call   7cdc <readseg>
+		for (i = 0; i < ph->p_memsz - ph->p_filesz; i++) {
+    7d63:	83 c4 0c             	add    $0xc,%esp
+    7d66:	31 c0                	xor    %eax,%eax
+    7d68:	8b 53 10             	mov    0x10(%ebx),%edx
+    7d6b:	8b 4b 14             	mov    0x14(%ebx),%ecx
+    7d6e:	29 d1                	sub    %edx,%ecx
+    7d70:	39 c1                	cmp    %eax,%ecx
+    7d72:	76 0a                	jbe    7d7e <bootmain+0x69>
+			*((char *) ph->p_pa + ph->p_filesz + i) = 0;
+    7d74:	03 53 0c             	add    0xc(%ebx),%edx
+    7d77:	c6 04 02 00          	movb   $0x0,(%edx,%eax,1)
 	eph = ph + ELFHDR->e_phnum;
-	for (; ph < eph; ph++)
-    7d5b:	83 c3 20             	add    $0x20,%ebx
+	for (; ph < eph; ph++) {
 		// p_pa is the load address of this segment (as well
 		// as the physical address)
 		readseg(ph->p_pa, ph->p_memsz, ph->p_offset);
-    7d5e:	ff 73 ec             	pushl  -0x14(%ebx)
-    7d61:	e8 76 ff ff ff       	call   7cdc <readseg>
+		for (i = 0; i < ph->p_memsz - ph->p_filesz; i++) {
+    7d7b:	40                   	inc    %eax
+    7d7c:	eb ea                	jmp    7d68 <bootmain+0x53>
 		goto bad;
 
 	// load each program segment (ignores ph flags)
 	ph = (struct Proghdr *) ((uint8_t *) ELFHDR + ELFHDR->e_phoff);
 	eph = ph + ELFHDR->e_phnum;
-	for (; ph < eph; ph++)
-    7d66:	83 c4 0c             	add    $0xc,%esp
-    7d69:	eb e6                	jmp    7d51 <bootmain+0x3c>
-		// as the physical address)
-		readseg(ph->p_pa, ph->p_memsz, ph->p_offset);
+	for (; ph < eph; ph++) {
+    7d7e:	83 c3 20             	add    $0x20,%ebx
+    7d81:	eb ce                	jmp    7d51 <bootmain+0x3c>
+		}
+	}
 
 	// call the entry point from the ELF header
 	// note: does not return!
 	((void (*)(void)) (ELFHDR->e_entry))();
-    7d6b:	ff 15 18 00 01 00    	call   *0x10018
+    7d83:	ff 15 18 00 01 00    	call   *0x10018
 }
 
 static inline void
 outw(int port, uint16_t data)
 {
 	asm volatile("outw %0,%w1" : : "a" (data), "d" (port));
-    7d71:	ba 00 8a 00 00       	mov    $0x8a00,%edx
-    7d76:	b8 00 8a ff ff       	mov    $0xffff8a00,%eax
-    7d7b:	66 ef                	out    %ax,(%dx)
-    7d7d:	b8 00 8e ff ff       	mov    $0xffff8e00,%eax
-    7d82:	66 ef                	out    %ax,(%dx)
-    7d84:	eb fe                	jmp    7d84 <bootmain+0x6f>
+    7d89:	ba 00 8a 00 00       	mov    $0x8a00,%edx
+    7d8e:	b8 00 8a ff ff       	mov    $0xffff8a00,%eax
+    7d93:	66 ef                	out    %ax,(%dx)
+    7d95:	b8 00 8e ff ff       	mov    $0xffff8e00,%eax
+    7d9a:	66 ef                	out    %ax,(%dx)
+    7d9c:	eb fe                	jmp    7d9c <bootmain+0x87>
