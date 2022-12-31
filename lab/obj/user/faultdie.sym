@@ -48,7 +48,7 @@
 00800c61 T sys_ipc_recv
 00800ca2 T set_pgfault_handler
 00800ce9 T _pgfault_upcall
-00800d0c T _panic
+00800d0d T _panic
 00800d60 T __udivdi3
 00800e90 T __umoddi3
 00801240 r error_string

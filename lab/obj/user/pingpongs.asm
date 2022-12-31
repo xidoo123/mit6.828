@@ -3096,7 +3096,7 @@ _pgfault_upcall:
 
 	addl $4, %esp			// esp now points to trap-time eflags
   801088:	83 c4 04             	add    $0x4,%esp
-	popf					// pop to eflags
+	popfl					// pop to eflags
   80108b:	9d                   	popf   
 
 	// Switch back to the adjusted trap-time stack.
@@ -3104,22 +3104,22 @@ _pgfault_upcall:
 
 	popl %esp				// pop to esp
   80108c:	5c                   	pop    %esp
-	subl $4, %esp
-  80108d:	83 ec 04             	sub    $0x4,%esp
+	// subl $4, %esp
+	lea -4(%esp), %esp
+  80108d:	8d 64 24 fc          	lea    -0x4(%esp),%esp
 
 	// Return to re-execute the instruction that faulted.
 	// LAB 4: Your code here.
 
 	ret
-  801090:	c3                   	ret    
-  801091:	66 90                	xchg   %ax,%ax
-  801093:	66 90                	xchg   %ax,%ax
-  801095:	66 90                	xchg   %ax,%ax
-  801097:	66 90                	xchg   %ax,%ax
-  801099:	66 90                	xchg   %ax,%ax
-  80109b:	66 90                	xchg   %ax,%ax
-  80109d:	66 90                	xchg   %ax,%ax
-  80109f:	90                   	nop
+  801091:	c3                   	ret    
+  801092:	66 90                	xchg   %ax,%ax
+  801094:	66 90                	xchg   %ax,%ax
+  801096:	66 90                	xchg   %ax,%ax
+  801098:	66 90                	xchg   %ax,%ax
+  80109a:	66 90                	xchg   %ax,%ax
+  80109c:	66 90                	xchg   %ax,%ax
+  80109e:	66 90                	xchg   %ax,%ax
 
 008010a0 <__udivdi3>:
   8010a0:	55                   	push   %ebp

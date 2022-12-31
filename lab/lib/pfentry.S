@@ -92,7 +92,8 @@ _pgfault_upcall:
 	// LAB 4: Your code here.
 
 	popl %esp				// pop to esp
-	subl $4, %esp
+	// subl $4, %esp		// arithmetic operation will change eflags!!!
+	lea -4(%esp), %esp		// subl $4, %esp
 
 	// Return to re-execute the instruction that faulted.
 	// LAB 4: Your code here.

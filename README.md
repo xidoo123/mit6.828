@@ -598,7 +598,7 @@ faultwrite: OK (0.9s)
 
 In part-B, if you encounters some wierd character printing out when you run `make run-forktree`, do check function `duppage` (make sure when the page is COW, you need to first `sys_page_map` for the child, then `sys_page_map` for the parent).
 
-Encounter this bug when you run `make run-faultregs`, complaining about `eflags` is changed after page fault handling.
+If you encounter the following bug when you run `make run-faultregs`, complaining about `eflags` is changed after page fault handling, go to check `pfentry.S` (make sure you didn't do any arithmeic operation after `popfl`).
 
 ```
 SMP: CPU 0 found 1 CPU(s)
@@ -634,4 +634,21 @@ No runnable environments in the system!
 Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
 K>
+```
+
+Part-B result:
+
+```
+faultread: OK (1.0s)
+faultwrite: OK (1.0s)
+faultdie: OK (2.0s)
+faultregs: OK (1.9s)
+    (Old jos.out.faultregs failure log removed)
+faultalloc: OK (1.0s)
+faultallocbad: OK (1.1s)
+faultnostack: OK (2.0s)
+faultbadhandler: OK (2.0s)
+faultevilhandler: OK (0.9s)
+forktree: OK (2.1s)
+Part B score: 50/50
 ```

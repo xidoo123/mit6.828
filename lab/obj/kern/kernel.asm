@@ -255,7 +255,7 @@ f0100186:	72 a3                	jb     f010012b <i386_init+0x91>
 	ENV_CREATE(TEST, ENV_TYPE_USER);
 f0100188:	83 ec 08             	sub    $0x8,%esp
 f010018b:	6a 00                	push   $0x0
-f010018d:	68 e0 a9 1b f0       	push   $0xf01ba9e0
+f010018d:	68 1c 07 20 f0       	push   $0xf020071c
 f0100192:	e8 eb 30 00 00       	call   f0103282 <env_create>
 	ENV_CREATE(user_dumbfork, ENV_TYPE_USER);
 	// ENV_CREATE(user_primes, ENV_TYPE_USER);
