@@ -2,7 +2,44 @@
 + mk obj/kern/kernel.img
 6828 decimal is 15254 octal!
 Physical memory: 131072K available, base = 640K, extended = 130432K
-kernel panic on CPU 0 at kern/pmap.c:868: assertion failed: page2pa(pp) != MPENTRY_PADDR
+[?] 1000
+[?] non-boot CPUs (APs)
+check_page_free_list() succeeded!
+check_page_alloc() succeeded!
+check_page() succeeded!
+check_kern_pgdir() succeeded!
+check_page_free_list() succeeded!
+check_page_installed_pgdir() succeeded!
+SMP: CPU 0 found 1 CPU(s)
+enabled interrupts: 1 2
+[00000000] new env 00001000
+       before   during  
+edi    00000000 00000000 OK
+esi    00000000 00000000 OK
+ebp    eebfdfd0 eebfdfd0 OK
+ebx    00000000 00000000 OK
+edx    00001000 00001000 OK
+ecx    00801246 00801246 OK
+eax    008003a0 008003a0 OK
+eip    008004da 008004da OK
+eflags 000008d7 000008d7 OK
+esp    eebfdfb8 eebfdfb8 OK
+Registers in UTrapframe OK
+       before   after   
+edi    00000000 00000000 OK
+esi    00000000 00000000 OK
+ebp    eebfdfd0 eebfdfd0 OK
+ebx    00000000 00000000 OK
+edx    00001000 00001000 OK
+ecx    00801246 00801246 OK
+eax    008003a0 008003a0 OK
+eip    008004da 008004da OK
+eflags 000008d7 00000086 MISMATCH
+esp    eebfdfb8 eebfdfb8 OK
+Registers after page-fault MISMATCH
+[00001000] exiting gracefully
+[00001000] free env 00001000
+No runnable environments in the system!
 Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
-qemu: terminating on signal 15 from pid 103882
+qemu: terminating on signal 15 from pid 23191

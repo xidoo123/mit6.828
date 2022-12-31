@@ -798,7 +798,7 @@ user_mem_check(struct Env *env, const void *va, size_t len, int perm)
 	for (void* i=ROUNDDOWN((void *)va, PGSIZE); i<ROUNDUP((void *)(va+len), PGSIZE); i+=PGSIZE) {
 
 		if ((uintptr_t)i >= ULIM) {
-			user_mem_check_addr = (uintptr_t)i;
+			user_mem_check_addr = (i == ROUNDDOWN((void *)va, PGSIZE))? (uintptr_t)va:(uintptr_t)i;
 			return -E_FAULT;
 		}
 
@@ -806,7 +806,7 @@ user_mem_check(struct Env *env, const void *va, size_t len, int perm)
 		pte = pgdir_walk(env->env_pgdir, i, 0);
 
 		if (pte == NULL) {
-			user_mem_check_addr = (uintptr_t)i;
+			user_mem_check_addr = (i == ROUNDDOWN((void *)va, PGSIZE))? (uintptr_t)va:(uintptr_t)i;
 			return -E_FAULT;
 		}
 
@@ -814,7 +814,7 @@ user_mem_check(struct Env *env, const void *va, size_t len, int perm)
 		if (((uint32_t)(*pte) & perm) != perm) {
 			// if happens at first page, we return va instead of ROUNDDOWN(va, PGSIZE)
 			// just to make it more precise 
-			user_mem_check_addr = i == ROUNDDOWN(va, PGSIZE)? (uintptr_t)va:(uintptr_t)i;
+			user_mem_check_addr = (i == ROUNDDOWN((void *)va, PGSIZE))? (uintptr_t)va:(uintptr_t)i;
 			return -E_FAULT;
 		}
 

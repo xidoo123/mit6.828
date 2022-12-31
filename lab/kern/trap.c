@@ -14,6 +14,8 @@
 #include <kern/cpu.h>
 #include <kern/spinlock.h>
 
+#include <inc/string.h>
+
 // static struct Taskstate ts;
 
 /* For debugging, so print_trapframe can distinguish between printing
@@ -352,6 +354,38 @@ page_fault_handler(struct Trapframe *tf)
 	//   (the 'tf' variable points at 'curenv->env_tf').
 
 	// LAB 4: Your code here.
+
+	if (curenv->env_pgfault_upcall) {
+
+		// if pgfault happens in user stack
+		uint32_t estack_top = UXSTACKTOP;
+
+		// if pgfault happens in user exception stack
+		// as mentioned above, we push things right after the previous exception stack 
+		// started with dummy 4 bytes
+		if (tf->tf_esp < UXSTACKTOP && tf->tf_esp >= UXSTACKTOP - PGSIZE)
+			estack_top = tf->tf_esp - 4;
+
+		// char* utrapframe = (char *)(estack_top - sizeof(struct UTrapframe));
+		struct UTrapframe *utf = (struct UTrapframe *)(estack_top - sizeof(struct UTrapframe));
+		// do a memory check
+		user_mem_assert(curenv, (void *)utf, sizeof(struct UTrapframe), PTE_W | PTE_P);
+
+		// copy context to utrapframe 
+		// memcpy(utrapframe, (char *)tf, sizeof(struct UTrapframe));
+		// *(uint32_t *)utrapframe = fault_va;
+		utf->utf_fault_va = fault_va;
+        utf->utf_err      = tf->tf_trapno;
+        utf->utf_regs     = tf->tf_regs;
+        utf->utf_eflags   = tf->tf_eflags;
+        utf->utf_eip      = tf->tf_eip;
+        utf->utf_esp      = tf->tf_esp;
+
+		curenv->env_tf.tf_esp = (uint32_t)utf;
+		curenv->env_tf.tf_eip = (uint32_t)curenv->env_pgfault_upcall;
+		env_run(curenv);
+
+	}
 
 	// Destroy the environment that caused the fault.
 	cprintf("[%08x] user fault va %08x ip %08x\n",

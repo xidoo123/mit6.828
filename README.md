@@ -591,4 +591,7 @@ After doing partA:
 dumbfork: OK (0.7s)
     (Old jos.out.dumbfork failure log removed)
 Part A score: 5/5
+
+faultread: OK (1.1s)
+faultwrite: OK (0.9s)
 ```
