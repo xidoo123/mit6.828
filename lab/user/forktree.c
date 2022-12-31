@@ -10,11 +10,13 @@ void
 forkchild(const char *cur, char branch)
 {
 	char nxt[DEPTH+1];
+	memset(nxt, 0, DEPTH+1);
 
 	if (strlen(cur) >= DEPTH)
 		return;
-
+	// cprintf("%s, %s\n", cur, nxt);
 	snprintf(nxt, DEPTH+1, "%s%c", cur, branch);
+	// cprintf("%s, %s\n", cur, nxt);
 	if (fork() == 0) {
 		forktree(nxt);
 		exit();

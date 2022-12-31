@@ -42,4 +42,4 @@ Registers after page-fault MISMATCH
 No runnable environments in the system!
 Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
-qemu: terminating on signal 15 from pid 23191
+qemu: terminating on signal 15 from pid 32482

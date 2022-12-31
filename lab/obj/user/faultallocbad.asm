@@ -2658,7 +2658,7 @@ _pgfault_upcall:
 
 	addl $4, %esp			// esp now points to trap-time eflags
   800d7e:	83 c4 04             	add    $0x4,%esp
-	popfl					// pop to eflags
+	popf					// pop to eflags
   800d81:	9d                   	popf   
 
 	// Switch back to the adjusted trap-time stack.

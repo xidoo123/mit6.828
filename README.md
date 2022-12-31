@@ -595,3 +595,43 @@ Part A score: 5/5
 faultread: OK (1.1s)
 faultwrite: OK (0.9s)
 ```
+
+In part-B, if you encounters some wierd character printing out when you run `make run-forktree`, do check function `duppage` (make sure when the page is COW, you need to first `sys_page_map` for the child, then `sys_page_map` for the parent).
+
+Encounter this bug when you run `make run-faultregs`, complaining about `eflags` is changed after page fault handling.
+
+```
+SMP: CPU 0 found 1 CPU(s)
+enabled interrupts: 1 2
+[00000000] new env 00001000
+       before   during
+edi    00000000 00000000 OK
+esi    00000000 00000000 OK
+ebp    eebfdfd0 eebfdfd0 OK
+ebx    00000000 00000000 OK
+edx    00001000 00001000 OK
+ecx    00801246 00801246 OK
+eax    008003a0 008003a0 OK
+eip    008004da 008004da OK
+eflags 000008d7 000008d7 OK
+esp    eebfdfb8 eebfdfb8 OK
+Registers in UTrapframe OK
+       before   after
+edi    00000000 00000000 OK
+esi    00000000 00000000 OK
+ebp    eebfdfd0 eebfdfd0 OK
+ebx    00000000 00000000 OK
+edx    00001000 00001000 OK
+ecx    00801246 00801246 OK
+eax    008003a0 008003a0 OK
+eip    008004da 008004da OK
+eflags 000008d7 00000086 MISMATCH
+esp    eebfdfb8 eebfdfb8 OK
+Registers after page-fault MISMATCH
+[00001000] exiting gracefully
+[00001000] free env 00001000
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K>
+```
