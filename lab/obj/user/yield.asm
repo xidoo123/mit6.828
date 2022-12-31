@@ -43,7 +43,7 @@ umain(int argc, char **argv)
   800036:	53                   	push   %ebx
   800037:	83 ec 0c             	sub    $0xc,%esp
 	int i;
-
+	// cprintf("[%p]\n", umain);
 	cprintf("Hello, I am environment %08x.\n", thisenv->env_id);
   80003a:	a1 04 20 80 00       	mov    0x802004,%eax
   80003f:	8b 40 48             	mov    0x48(%eax),%eax
@@ -59,7 +59,7 @@ umain(int argc, char **argv)
 			thisenv->env_id, i);
   80005a:	a1 04 20 80 00       	mov    0x802004,%eax
 	int i;
-
+	// cprintf("[%p]\n", umain);
 	cprintf("Hello, I am environment %08x.\n", thisenv->env_id);
 	for (i = 0; i < 5; i++) {
 		sys_yield();
@@ -73,7 +73,7 @@ umain(int argc, char **argv)
 umain(int argc, char **argv)
 {
 	int i;
-
+	// cprintf("[%p]\n", umain);
 	cprintf("Hello, I am environment %08x.\n", thisenv->env_id);
 	for (i = 0; i < 5; i++) {
   800071:	83 c3 01             	add    $0x1,%ebx

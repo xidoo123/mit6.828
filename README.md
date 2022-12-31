@@ -584,3 +584,11 @@ Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
 K> xQEMU: Terminated
 ```
+
+After doing partA:
+
+```
+dumbfork: OK (0.7s)
+    (Old jos.out.dumbfork failure log removed)
+Part A score: 5/5
+```

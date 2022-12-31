@@ -285,6 +285,13 @@ mem_init_mp(void)
 	//
 	// LAB 4: Your code here:
 
+	uint32_t kstacktop_i;
+
+	for (int i=0; i<NCPU; i++) {
+		kstacktop_i = KSTACKTOP - i * (KSTKSIZE + KSTKGAP);
+		boot_map_region(kern_pgdir, kstacktop_i - KSTKSIZE, KSTKSIZE, PADDR(&percpu_kstacks[i]), PTE_W );
+	}
+
 }
 
 // --------------------------------------------------------------
@@ -334,11 +341,22 @@ page_init(void)
 	pages[0].pp_ref = 1;
 	pages[0].pp_link = 0;
 
-	// 2)	[1-npages_basemem) free
+	extern unsigned char mpentry_start[], mpentry_end[];
+	uint32_t size = ROUNDUP(mpentry_end - mpentry_start, PGSIZE);
+	cprintf("[?] %x\n", size);
+
+	// 2)	[1-npages_basemem) free, except APs area (lab4)
 	for (i = 1; i < npages_basemem; i++) {
-		pages[i].pp_ref = 0;
-		pages[i].pp_link = page_free_list;
-		page_free_list = &pages[i];
+		if (i * PGSIZE >= MPENTRY_PADDR && i * PGSIZE < MPENTRY_PADDR + size) {
+			pages[i].pp_ref = 1;
+			pages[i].pp_link = 0;
+			cprintf("[?] non-boot CPUs (APs)\n");
+		}
+		else {
+			pages[i].pp_ref = 0;
+			pages[i].pp_link = page_free_list;
+			page_free_list = &pages[i];
+		}
 	}
 
 	// [npages_basemem, IOPHYSMEM / PGSIZE) free
@@ -735,7 +753,18 @@ mmio_map_region(physaddr_t pa, size_t size)
 	// Hint: The staff solution uses boot_map_region.
 	//
 	// Your code here:
-	panic("mmio_map_region not implemented");
+	// panic("mmio_map_region not implemented");
+
+	uintptr_t mmio = base;
+
+	if (ROUNDUP(mmio + size, PGSIZE) >= MMIOLIM)
+		panic("mmio_map_region: mmio out of memory");
+		
+	boot_map_region(kern_pgdir, mmio, ROUNDUP(size, PGSIZE), pa, PTE_PCD|PTE_PWT|PTE_W);
+
+	base += ROUNDUP(size, PGSIZE);
+
+	return (void *)mmio;
 }
 
 static uintptr_t user_mem_check_addr;

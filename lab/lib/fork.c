@@ -78,6 +78,7 @@ envid_t
 fork(void)
 {
 	// LAB 4: Your code here.
+	cprintf("[fork]\n");
 	panic("fork not implemented");
 }
 

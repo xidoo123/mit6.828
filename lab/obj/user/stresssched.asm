@@ -258,7 +258,7 @@ _panic(const char *file, int line, const char *fmt, ...)
   800171:	ff 75 10             	pushl  0x10(%ebp)
   800174:	e8 54 00 00 00       	call   8001cd <vcprintf>
 	cprintf("\n");
-  800179:	c7 04 24 77 10 80 00 	movl   $0x801077,(%esp)
+  800179:	c7 04 24 15 13 80 00 	movl   $0x801315,(%esp)
   800180:	e8 99 00 00 00       	call   80021e <cprintf>
   800185:	83 c4 10             	add    $0x10,%esp
 
@@ -2634,36 +2634,33 @@ fork(void)
 {
   800d55:	55                   	push   %ebp
   800d56:	89 e5                	mov    %esp,%ebp
-  800d58:	83 ec 0c             	sub    $0xc,%esp
+  800d58:	83 ec 14             	sub    $0x14,%esp
 	// LAB 4: Your code here.
+	cprintf("[fork]\n");
+  800d5b:	68 0f 13 80 00       	push   $0x80130f
+  800d60:	e8 b9 f4 ff ff       	call   80021e <cprintf>
 	panic("fork not implemented");
-  800d5b:	68 1b 13 80 00       	push   $0x80131b
-  800d60:	6a 51                	push   $0x51
-  800d62:	68 0f 13 80 00       	push   $0x80130f
-  800d67:	e8 d9 f3 ff ff       	call   800145 <_panic>
+  800d65:	83 c4 0c             	add    $0xc,%esp
+  800d68:	68 23 13 80 00       	push   $0x801323
+  800d6d:	6a 52                	push   $0x52
+  800d6f:	68 17 13 80 00       	push   $0x801317
+  800d74:	e8 cc f3 ff ff       	call   800145 <_panic>
 
-00800d6c <sfork>:
+00800d79 <sfork>:
 }
 
 // Challenge!
 int
 sfork(void)
 {
-  800d6c:	55                   	push   %ebp
-  800d6d:	89 e5                	mov    %esp,%ebp
-  800d6f:	83 ec 0c             	sub    $0xc,%esp
+  800d79:	55                   	push   %ebp
+  800d7a:	89 e5                	mov    %esp,%ebp
+  800d7c:	83 ec 0c             	sub    $0xc,%esp
 	panic("sfork not implemented");
-  800d72:	68 1a 13 80 00       	push   $0x80131a
-  800d77:	6a 58                	push   $0x58
-  800d79:	68 0f 13 80 00       	push   $0x80130f
-  800d7e:	e8 c2 f3 ff ff       	call   800145 <_panic>
-  800d83:	66 90                	xchg   %ax,%ax
-  800d85:	66 90                	xchg   %ax,%ax
-  800d87:	66 90                	xchg   %ax,%ax
-  800d89:	66 90                	xchg   %ax,%ax
-  800d8b:	66 90                	xchg   %ax,%ax
-  800d8d:	66 90                	xchg   %ax,%ax
-  800d8f:	90                   	nop
+  800d7f:	68 22 13 80 00       	push   $0x801322
+  800d84:	6a 59                	push   $0x59
+  800d86:	68 17 13 80 00       	push   $0x801317
+  800d8b:	e8 b5 f3 ff ff       	call   800145 <_panic>
 
 00800d90 <__udivdi3>:
   800d90:	55                   	push   %ebp

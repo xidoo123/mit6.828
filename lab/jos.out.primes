@@ -1,0 +1,6 @@
++ ld obj/kern/kernel
++ mk obj/kern/kernel.img
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K
+kernel panic on CPU 0 at kern/pmap.c:868: assertion failed: page2pa(pp) != MPENTRY_PADDR
+Welcome to the JOS kernel moqemu: terminating on signal 15 from pid 105015
