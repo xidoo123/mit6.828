@@ -474,3 +474,113 @@ Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
 K>
 ```
+
+
+## lab4
+
+
+In `i386_init`, remember to comment out `user_primes`, because it calls `fork` which we haven't inplemented yet.
+
+```c
+#else
+	// Touch all you want.
+	ENV_CREATE(user_yield, ENV_TYPE_USER);
+	ENV_CREATE(user_yield, ENV_TYPE_USER);
+	ENV_CREATE(user_yield, ENV_TYPE_USER);
+	// ENV_CREATE(user_primes, ENV_TYPE_USER);
+```
+
+Using only one cpu looks good.
+
+```
+x1do0@ubuntu:~/mit6.828/lab$ make qemu
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::26000 -D qemu.log -smp 1  -nographic
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K
+[?] 1000
+[?] non-boot CPUs (APs)
+check_page_free_list() succeeded!
+check_page_alloc() succeeded!
+check_page() succeeded!
+check_kern_pgdir() succeeded!
+check_page_free_list() succeeded!
+check_page_installed_pgdir() succeeded!
+SMP: CPU 0 found 1 CPU(s)
+enabled interrupts: 1 2
+[00000000] new env 00001000
+[00000000] new env 00001001
+[00000000] new env 00001002
+Hello, I am environment 00001000.
+Hello, I am environment 00001001.
+Hello, I am environment 00001002.
+Back in environment 00001000, iteration 0.
+Back in environment 00001001, iteration 0.
+Back in environment 00001002, iteration 0.
+Back in environment 00001000, iteration 1.
+Back in environment 00001001, iteration 1.
+Back in environment 00001002, iteration 1.
+Back in environment 00001000, iteration 2.
+Back in environment 00001001, iteration 2.
+Back in environment 00001002, iteration 2.
+Back in environment 00001000, iteration 3.
+Back in environment 00001001, iteration 3.
+Back in environment 00001002, iteration 3.
+Back in environment 00001000, iteration 4.
+All done in environment 00001000.
+[00001000] exiting gracefully
+[00001000] free env 00001000
+Back in environment 00001001, iteration 4.
+All done in environment 00001001.
+[00001001] exiting gracefully
+[00001001] free env 00001001
+Back in environment 00001002, iteration 4.
+All done in environment 00001002.
+[00001002] exiting gracefully
+[00001002] free env 00001002
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> QEMU: Terminated
+```
+
+Using more than 1 cpus, there will be a page fault and not exiting gracefully. But the kernel manages to switch between enviroments indeed. 
+
+```
+x1do0@ubuntu:~/mit6.828/lab$ make CPUS=2 qemu
++ cc kern/init.c
++ ld obj/kern/kernel
++ mk obj/kern/kernel.img
+qemu-system-i386 -drive file=obj/kern/kernel.img,index=0,media=disk,format=raw -serial mon:stdio -gdb tcp::26000 -D qemu.log -smp 2  -nographic
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K
+[?] 1000
+[?] non-boot CPUs (APs)
+check_page_free_list() succeeded!
+check_page_alloc() succeeded!
+check_page() succeeded!
+check_kern_pgdir() succeeded!
+check_page_free_list() succeeded!
+check_page_installed_pgdir() succeeded!
+SMP: CPU 0 found 2 CPU(s)
+enabled interrupts: 1 2
+SMP: CPU 1 starting
+[00000000] new env 00001000
+[00000000] new env 00001001
+[00000000] new env 00001002
+Hello, I am environment 00001000.
+Hello, I am environment 00001001.
+Back in environment 00001000, iteration 0.
+Hello, I am environment 00001002.
+Back in environment 00001001, iteration 0.
+Back in environment 00001000, iteration 1.
+Back in environment 00001002, iteration 0.
+Back in environment 00001001, iteration 1.
+Back in environment 00001000, iteration 2.
+Back in environment 00001002, iteration 1.
+Back in environment 00001001, iteration 2.
+Back in environment 00001000, iteration 3.
+kernel panic on CPU 0 at kern/trap.c:320: page fault in kernel at 0!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+K> xQEMU: Terminated
+```
