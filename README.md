@@ -654,3 +654,36 @@ forktree: OK (2.1s)
 Part B score: 50/50
 ```
 
+Result:
+
+```
++ mk obj/kern/kernel.img
+make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
+dumbfork: OK (0.9s)
+Part A score: 5/5
+
+faultread: OK (1.1s)
+faultwrite: OK (0.9s)
+faultdie: OK (1.1s)
+faultregs: OK (2.0s)
+faultalloc: OK (2.0s)
+faultallocbad: OK (1.8s)
+faultnostack: OK (2.2s)
+faultbadhandler: OK (2.0s)
+faultevilhandler: OK (2.1s)
+forktree: OK (1.9s)
+Part B score: 50/50
+
+spin: OK (2.1s)
+stresssched: OK (1.1s)
+sendpage: OK (1.7s)
+pingpong: OK (2.0s)
+    (Old jos.out.pingpong failure log removed)
+primes: OK (2.1s)
+    (Old jos.out.primes failure log removed)
+Part C score: 25/25
+
+Score: 80/80
+```
+
+
