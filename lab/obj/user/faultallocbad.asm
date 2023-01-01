@@ -2666,8 +2666,8 @@ _pgfault_upcall:
 
 	popl %esp				// pop to esp
   800d82:	5c                   	pop    %esp
-	// subl $4, %esp
-	lea -4(%esp), %esp
+	// subl $4, %esp		// arithmetic operation will change eflags!!!
+	lea -4(%esp), %esp		// subl $4, %esp
   800d83:	8d 64 24 fc          	lea    -0x4(%esp),%esp
 
 	// Return to re-execute the instruction that faulted.

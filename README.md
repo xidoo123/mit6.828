@@ -478,6 +478,7 @@ K>
 
 ## lab4
 
+WARNING: If your code has some really weird results in this lab(e.g. pure random behaviors), it's even more efficient to redo the whole lab4 instead of using gdb or smth to debug. Hopefully you will find small bugs which are definitely hard to be spot when debugging in gdb.
 
 In `i386_init`, remember to comment out `user_primes`, because it calls `fork` which we haven't inplemented yet.
 
@@ -652,3 +653,4 @@ faultevilhandler: OK (0.9s)
 forktree: OK (2.1s)
 Part B score: 50/50
 ```
+

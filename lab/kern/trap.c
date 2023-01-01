@@ -95,6 +95,13 @@ trap_init(void)
 	void _T_SIMDERR_handler();
 	void _T_SYSCALL_handler();
 
+	void _IRQ_TIMER_handler();
+	void _IRQ_KBD_handler();
+	void _IRQ_SERIAL_handler();
+	void _IRQ_SPURIOUS_handler();
+	void _IRQ_IDE_handler();
+	void _IRQ_ERROR_handler();
+
 	// SETGATE(gate, istrap, sel, off, dpl);
 	SETGATE(idt[T_DIVIDE], 0, GD_KT, _T_DIVIDE_handler, 0);
 	SETGATE(idt[T_DEBUG], 0, GD_KT, _T_DEBUG_handler, 0);
@@ -115,6 +122,13 @@ trap_init(void)
 	SETGATE(idt[T_MCHK], 0, GD_KT, _T_MCHK_handler, 0);
 	SETGATE(idt[T_SIMDERR], 0, GD_KT, _T_SIMDERR_handler, 0);
 	SETGATE(idt[T_SYSCALL], 0, GD_KT, _T_SYSCALL_handler, 3);
+
+	SETGATE(idt[IRQ_TIMER + IRQ_OFFSET], 0, GD_KT, _IRQ_TIMER_handler, 0);
+	SETGATE(idt[IRQ_KBD + IRQ_OFFSET], 0, GD_KT, _IRQ_KBD_handler, 0);
+	SETGATE(idt[IRQ_SERIAL + IRQ_OFFSET], 0, GD_KT, _IRQ_SERIAL_handler, 0);
+	SETGATE(idt[IRQ_SPURIOUS + IRQ_OFFSET], 0, GD_KT, _IRQ_SPURIOUS_handler, 0);
+	SETGATE(idt[IRQ_IDE + IRQ_OFFSET], 0, GD_KT, _IRQ_IDE_handler, 0);
+	SETGATE(idt[IRQ_ERROR + IRQ_OFFSET], 0, GD_KT, _IRQ_ERROR_handler, 0);
 
 	// Per-CPU setup 
 	trap_init_percpu();
@@ -151,7 +165,7 @@ trap_init_percpu(void)
 
 	// Setup a TSS so that we get the right stack
 	// when we trap to the kernel.
-	thiscpu->cpu_ts.ts_esp0 = KSTACKTOP;
+	thiscpu->cpu_ts.ts_esp0 = (uintptr_t) percpu_kstacks[cpunum()];
 	thiscpu->cpu_ts.ts_ss0 = GD_KD;
 	thiscpu->cpu_ts.ts_iomb = sizeof(struct Taskstate);
 
@@ -232,8 +246,13 @@ trap_dispatch(struct Trapframe *tf)
 			// call syscall in kern/syscall.c
 			r->reg_eax = syscall(r->reg_eax, r->reg_edx, r->reg_ecx, r->reg_ebx, r->reg_edi, r->reg_esi);
 			break;
+		case (IRQ_OFFSET + IRQ_TIMER):
+			lapic_eoi();	// Acknowledge interrupt.
+			sched_yield();
+			break;
 		default:
 			// Unexpected trap: The user process or the kernel has a bug.
+			cprintf("[trapno: %x]\n", tf->tf_trapno);
 			print_trapframe(tf);
 			if (tf->tf_cs == GD_KT)
 				panic("unhandled trap in kernel");
