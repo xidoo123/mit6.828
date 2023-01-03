@@ -1,0 +1,13 @@
+# Homework 10
+
+before 
+
+```
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ big
+.
+wrote 140 sectors
+done; ok
+```
