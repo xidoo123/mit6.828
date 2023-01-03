@@ -1,6 +1,6 @@
 # Homework 10
 
-before 
+before
 
 ```
 cpu0: starting 0
