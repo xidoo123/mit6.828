@@ -168,8 +168,8 @@ file_block_walk(struct File *f, uint32_t filebno, uint32_t **ppdiskbno, bool all
 	// indirect block, allocated
 	if (f->f_indirect != 0) {
 		if (ppdiskbno != 0)
-			*ppdiskbno = (uint32_t *)(diskaddr(f->f_indirect + filebno - NDIRECT));
-		cprintf("[?] 0x%x, 0x%x, 0x%x, 0x%x -->\n", f->f_indirect, filebno - NDIRECT, *ppdiskbno, **ppdiskbno);
+			*ppdiskbno = ((uint32_t *)diskaddr(f->f_indirect) + filebno - NDIRECT);
+		// cprintf("[?] 0x%x, 0x%x, 0x%x, 0x%x -->\n", f->f_indirect, filebno - NDIRECT, *ppdiskbno, **ppdiskbno);
 		return 0;
 	}
 	else {
@@ -192,7 +192,7 @@ file_block_walk(struct File *f, uint32_t filebno, uint32_t **ppdiskbno, bool all
 		flush_block(diskaddr(blockno));
 
 		if (ppdiskbno != 0)
-			*ppdiskbno = (uint32_t *)(diskaddr(f->f_indirect + filebno - NDIRECT));
+			*ppdiskbno = ((uint32_t *)diskaddr(f->f_indirect) + filebno - NDIRECT);
 		return 0;
 	}
 

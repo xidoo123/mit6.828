@@ -688,6 +688,27 @@ Score: 80/80
 
 # lab 4
 
+WARNING: parameter `ppdiskbno` in `file_block_walk` stores the *address* of the block, not the block number.
+
+```
+internal FS tests [fs/test.c]: OK (0.5s)
+  fs i/o: OK
+  check_bc: OK
+  check_super: OK
+  check_bitmap: OK
+  alloc_block: OK
+  file_open: OK
+  file_get_block: OK
+  file_flush/file_truncate/file rewrite: OK
+testfile: OK (1.7s)
+  serve_open/file_stat/file_close: OK
+  file_read: OK
+  file_write: OK
+  file_read after file_write: OK
+  open: OK
+  large file: OK
+```
+
 
 
 
