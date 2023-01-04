@@ -161,7 +161,7 @@ file_block_walk(struct File *f, uint32_t filebno, uint32_t **ppdiskbno, bool all
 		if (ppdiskbno != 0)
 			*ppdiskbno = &f->f_direct[filebno];
 		
-		cprintf("[?] 0x%x, 0x%x -->\n", *ppdiskbno, **ppdiskbno);
+		// cprintf("[?] 0x%x, 0x%x -->\n", *ppdiskbno, **ppdiskbno);
 		return 0;
 	}
 
@@ -218,7 +218,7 @@ file_get_block(struct File *f, uint32_t filebno, char **blk)
 	int r = file_block_walk(f, filebno, &ptr, 1);
 	if (r < 0)
 		return r;
-	cprintf("[?] 0x%x -> \n", *ptr);
+	// cprintf("[?] 0x%x -> \n", *ptr);
 	// not allocated yet
 	if (*ptr == 0) {
 		
@@ -236,7 +236,7 @@ file_get_block(struct File *f, uint32_t filebno, char **blk)
 		flush_block(diskaddr(blockno));
 	}
 
-	cprintf("[?] 0x%x\n", *ptr);
+	// cprintf("[?] 0x%x\n", *ptr);
 
 	*blk = diskaddr(*ptr);
 	return 0;

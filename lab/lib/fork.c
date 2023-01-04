@@ -88,8 +88,11 @@ duppage(envid_t envid, unsigned pn)
 	// if (r < 0)
 	// 	return r;	// E_BAD_ENV
 	// envid_t parent_envid = env->env_parent_id;
-	
-	if ((uvpt[pn] & PTE_W) == PTE_W || (uvpt[pn] & PTE_COW) == PTE_COW) {
+
+	if (uvpt[pn] & PTE_SHARE) {
+		sys_page_map(0, (void *)va, envid, (void *)va, PTE_SYSCALL);
+	}
+	else if ((uvpt[pn] & PTE_W) == PTE_W || (uvpt[pn] & PTE_COW) == PTE_COW) {
 
 		// map the page copy-on-write into the address space of the child
         r = sys_page_map(0, (void *)va, envid, (void *)va, PTE_P|PTE_U|PTE_COW);
