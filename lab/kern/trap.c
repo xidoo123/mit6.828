@@ -233,6 +233,12 @@ trap_dispatch(struct Trapframe *tf)
 {
 	// Handle processor exceptions.
 	// LAB 3: Your code here.
+
+	// interrupt using lapic_eoi() before calling the scheduler!
+ 	// LAB 4: Your code here.
+ 
+	// Handle keyboard and serial interrupts.
+	// LAB 5: Your code here.
 	struct PushRegs* r = &tf->tf_regs;
 
 	switch(tf->tf_trapno) {
