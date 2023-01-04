@@ -160,13 +160,16 @@ file_block_walk(struct File *f, uint32_t filebno, uint32_t **ppdiskbno, bool all
 	if (filebno < NDIRECT) {
 		if (ppdiskbno != 0)
 			*ppdiskbno = &f->f_direct[filebno];
+		
+		cprintf("[?] 0x%x, 0x%x -->\n", *ppdiskbno, **ppdiskbno);
 		return 0;
 	}
 
 	// indirect block, allocated
 	if (f->f_indirect != 0) {
 		if (ppdiskbno != 0)
-			*ppdiskbno = &f->f_indirect;
+			*ppdiskbno = (uint32_t *)(diskaddr(f->f_indirect + filebno - NDIRECT));
+		cprintf("[?] 0x%x, 0x%x, 0x%x, 0x%x -->\n", f->f_indirect, filebno - NDIRECT, *ppdiskbno, **ppdiskbno);
 		return 0;
 	}
 	else {
@@ -185,13 +188,14 @@ file_block_walk(struct File *f, uint32_t filebno, uint32_t **ppdiskbno, bool all
 		f->f_indirect = blockno;
 
 		// flush to disk
-		memset(diskaddr(blockno), 0, 512);
+		memset(diskaddr(blockno), 0, BLKSIZE);
 		flush_block(diskaddr(blockno));
 
 		if (ppdiskbno != 0)
-			*ppdiskbno = &f->f_indirect;
+			*ppdiskbno = (uint32_t *)(diskaddr(f->f_indirect + filebno - NDIRECT));
 		return 0;
 	}
+
 }
 
 // Set *blk to the address in memory where the filebno'th
@@ -208,15 +212,15 @@ file_get_block(struct File *f, uint32_t filebno, char **blk)
 	// LAB 5: Your code here.
     //    panic("file_get_block not implemented");
 
-	uint32_t *ppdiskbno;
+	uint32_t *ptr;
 	int blockno = 0;
 
-	int r = file_block_walk(f, filebno, &ppdiskbno, 1);
+	int r = file_block_walk(f, filebno, &ptr, 1);
 	if (r < 0)
 		return r;
-	
+	cprintf("[?] 0x%x -> \n", *ptr);
 	// not allocated yet
-	if (*ppdiskbno == 0) {
+	if (*ptr == 0) {
 		
 		blockno = alloc_block();
 
@@ -225,16 +229,16 @@ file_get_block(struct File *f, uint32_t filebno, char **blk)
 		if (blockno < 0)
 			return blockno;
 		
-		*ppdiskbno = blockno;
+		*ptr = blockno;
 
 		// flush to disk
-		memset(diskaddr(blockno), 0, 512);
+		memset(diskaddr(blockno), 0, BLKSIZE);
 		flush_block(diskaddr(blockno));
 	}
 
-	// cprintf("[?] %d\n", blockno);
+	cprintf("[?] 0x%x\n", *ptr);
 
-	*blk = diskaddr(*ppdiskbno);
+	*blk = diskaddr(*ptr);
 	return 0;
 
 }

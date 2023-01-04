@@ -17,25 +17,94 @@ FS can do I/O
 Device 1 presence: 1
 block cache is good
 superblock is good
+i am parent environment 00001001
 bitmap is good
 alloc_block is good
-i am parent environment 00001001
+[?] 0x10001090, 0x69 -->
+[?] 0x69 -> 
+[?] 0x69
+[?] 0x10001094, 0x6a -->
+[?] 0x6a -> 
+[?] 0x6a
+[?] 0x10001090, 0x69 -->
+[?] 0x69 -> 
+[?] 0x69
 file_open is good
+[?] 0x10069088, 0x3 -->
+[?] 0x3 -> 
+[?] 0x3
 file_get_block is good
+[?] 0x10069088, 0x3 -->
 file_flush is good
+[?] 0x10069088, 0x3 -->
 file_truncate is good
+[?] 0x10069088, 0x0 -->
+[?] 0x0 -> 
+[?] 0x3
+[?] 0x10069088, 0x3 -->
 file rewrite is good
-elf magic 00000100 want 464c457f
-[00001001] user panic in <unknown> at user/spawnhello.c:9: spawn(hello) failed: file is not a valid executable
+fs req 1 from 00001001 [page 00394007: hello]
+serve_open 00001001 hello 0x0
+[?] 0x10001090, 0x69 -->
+[?] 0x69 -> 
+[?] 0x69
+[?] 0x10001094, 0x6a -->
+[?] 0x6a -> 
+[?] 0x6a
+[?] 0x10001090, 0x69 -->
+[?] 0x69 -> 
+[?] 0x69
+[?] 0x10001094, 0x6a -->
+[?] 0x6a -> 
+[?] 0x6a
+sending success, page d0000000
+fs req 3 from 00001001 [page 00394007: ]
+serve_read 00001001 00000400 00000200
+[?] 0x1006a688, 0x5f -->
+[?] 0x5f -> 
+[?] 0x5f
+fs req 3 from 00001001 [page 00394007: ]
+serve_read 00001001 00000400 00000010
+[?] 0x1006a68c, 0x60 -->
+[?] 0x60 -> 
+[?] 0x60
+fs req 3 from 00001001 [page 00394007: ]
+serve_read 00001001 00000400 00001000
+[?] 0x1006a68c, 0x60 -->
+[?] 0x60 -> 
+[?] 0x60
+fs req 3 from 00001001 [page 00394007: ]
+serve_read 00001001 00000400 00001000
+[?] 0x1006a690, 0x61 -->
+[?] 0x61 -> 
+[?] 0x61
+fs req 3 from 00001001 [page 00394007: ]
+serve_read 00001001 00000400 00000253
+[?] 0x1006a694, 0x62 -->
+[?] 0x62 -> 
+[?] 0x62
+fs req 3 from 00001001 [page 00394007: ]
+serve_read 00001001 00000400 00000058
+[?] 0x1006a698, 0x63 -->
+[?] 0x63 -> 
+[?] 0x63
+fs req 6 from 00001001 [page 00394007: ]
+serve_flush 00001001 00000400
+[?] 0x1006a688, 0x5f -->
+[?] 0x1006a68c, 0x60 -->
+[?] 0x1006a690, 0x61 -->
+[?] 0x1006a694, 0x62 -->
+[?] 0x1006a698, 0x63 -->
+[00001001] user panic in <unknown> at lib/spawn.c:134: sys_env_set_trapframe: invalid parameter
 Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
-TRAP frame at 0xf029407c from CPU 0
-  edi  0x00000000
-  esi  0x0080234e
-  ebp  0xeebfdfb0
-  oesp 0xf0211fdc
-  ebx  0xeebfdfc4
-  edx  0xeebfde68
+TRAP frame at 0xf029507c from CPU 0
+  edi  0x00000058
+  esi  0x0080236e
+  ebp  0xeebfdcd0
+  oesp 0xf0212fdc
+  ebx  0xeebfdce4
+  edx  0xeebfdb88
   ecx  0x00000001
   eax  0x00000001
   es   0x----0023
@@ -45,6 +114,6 @@ TRAP frame at 0xf029407c from CPU 0
   eip  0x0080011f
   cs   0x----001b
   flag 0x00000282
-  esp  0xeebfdfa8
+  esp  0xeebfdcc8
   ss   0x----0023
-qemu: terminating on signal 15 from pid 93250
+qemu: terminating on signal 15 from pid 107301

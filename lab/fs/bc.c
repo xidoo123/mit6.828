@@ -55,7 +55,7 @@ bc_pgfault(struct UTrapframe *utf)
 	if (r < 0)
 		panic("bc_pgfault: sys_page_alloc: %e", r);
 
-	r =	ide_read(blockno * 8, base_addr, 8);
+	r =	ide_read(blockno * (BLKSIZE / SECTSIZE), base_addr, (BLKSIZE / SECTSIZE));
 	if (r < 0)
 		panic("bc_pgfault: ide_read: %e", r);
 
