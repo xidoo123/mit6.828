@@ -18,25 +18,26 @@ Device 1 presence: 1
 block cache is good
 superblock is good
 bitmap is good
-[00001000] user panic in fs at fs/fs.c:65: alloc_block not implemented
+alloc_block is good
+[00001000] user panic in fs at fs/fs.c:169: file_get_block not implemented
 Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
 TRAP frame at 0xf0293000 from CPU 0
-  edi  0x00000000
-  esi  0x00803746
-  ebp  0xeebfdf60
+  edi  0x10001000
+  esi  0x0080378a
+  ebp  0xeebfdea0
   oesp 0xf0210fdc
-  ebx  0xeebfdf74
-  edx  0xeebfde18
+  ebx  0xeebfdeb4
+  edx  0xeebfdd58
   ecx  0x00000001
   eax  0x00000001
   es   0x----0023
   ds   0x----0023
   trap 0x00000003 Breakpoint
   err  0x00000000
-  eip  0x008016de
+  eip  0x00801740
   cs   0x----001b
   flag 0x00003282
-  esp  0xeebfdf58
+  esp  0xeebfde98
   ss   0x----0023
-qemu: terminating on signal 15 from pid 83759
+qemu: terminating on signal 15 from pid 86263
