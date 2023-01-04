@@ -345,7 +345,7 @@ page_init(void)
 
 	extern unsigned char mpentry_start[], mpentry_end[];
 	uint32_t size = ROUNDUP(mpentry_end - mpentry_start, PGSIZE);
-	cprintf("[?] %x\n", size);
+	// cprintf("[?] Init from 0x%x to 0x%x\n", PGSIZE, PGSIZE * npages_basemem);
 
 	// 2)	[1-npages_basemem) free, except APs area (lab4)
 	for (i = 1; i < npages_basemem; i++) {
@@ -375,7 +375,7 @@ page_init(void)
 		pages[i].pp_link = 0;
 	}
 
-
+	// cprintf("[?] Init from 0x%x to 0x%x\n", EXTPHYSMEM, PGSIZE * npages);
 	// cprintf("[?] %d\n", PADDR(boot_alloc(0)) / PGSIZE);
 	// 4) [EXTPHYSMEM / PGSIZE, kernel end) in use
 	for (; i < PADDR(boot_alloc(0)) / PGSIZE; i++) {
@@ -383,7 +383,6 @@ page_init(void)
 		pages[i].pp_link = 0;
 	}
 
-	// cprintf("[?] %d\n", npages);
 	// [kernel end, npages) free
 	for (; i < npages; i++) {
 		pages[i].pp_ref = 0;
@@ -496,12 +495,20 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 
 	// we have virtual address
 	// cprintf("[?] %x\n", va);
+
+	if ((uint32_t)va == 0xeebfe000)
+		cprintf("Error hit\n");
+
 	uint32_t Page_Directory_Index = PDX(va);
 	uint32_t Page_Table_Index = PTX(va);
 	uint32_t Offset_In_PTE = PGOFF(va);
 
 	// level 2 page table not exist
 	if (pgdir[Page_Directory_Index] == 0) {
+
+		if ((uint32_t)va == 0xeebfe000)
+			cprintf("Error hit2\n");
+
 		if (create == 0)
 			return NULL;
 		
@@ -521,12 +528,19 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 
 	}
 
+	if ((uint32_t)va == 0xeebfe000)
+		cprintf("Error hit3, 0x%x\n", pgdir[Page_Directory_Index]);
+
+
 	// cprintf("[?] %x\n", KADDR(PTE_ADDR(pgdir[Page_Directory_Index])));
 	
 	// remember each entry is 4 byte long
 	// so we need to convert type to pte_t * in order to add 4 on address each time
 	// instead of add 1
 	pte_t *p = (pte_t *) KADDR(PTE_ADDR(pgdir[Page_Directory_Index]));
+
+	if ((uint32_t)va == 0xeebfe000)
+		cprintf("Error hit4, 0x%x, 0x%x\n", (uint32_t)p, (uint32_t)*p);
 
 	return &p[Page_Table_Index];
 }
@@ -545,6 +559,9 @@ pgdir_walk(pde_t *pgdir, const void *va, int create)
 static void
 boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm)
 {
+	
+	cprintf("[boot_map_region] 0x%x, len 0x%x\n", va, size);
+	
 	// Fill this function in	
 	if (size % PGSIZE != 0)
 		panic("boot_map_region: size is not a multiple of PGSIZE\n");
@@ -807,8 +824,9 @@ user_mem_check(struct Env *env, const void *va, size_t len, int perm)
 		//  get this page
 		pte = pgdir_walk(env->env_pgdir, i, 0);
 
-		if (pte == NULL) {
+		if (pte == NULL || (uint32_t)(*pte) == 0) {
 			user_mem_check_addr = (i == ROUNDDOWN((void *)va, PGSIZE))? (uintptr_t)va:(uintptr_t)i;
+			cprintf("[-] page [0x%x] error, %d, %d\n", (uint32_t)(*pte), ((uint32_t)(*pte) & perm), perm);
 			return -E_FAULT;
 		}
 
@@ -817,6 +835,7 @@ user_mem_check(struct Env *env, const void *va, size_t len, int perm)
 			// if happens at first page, we return va instead of ROUNDDOWN(va, PGSIZE)
 			// just to make it more precise 
 			user_mem_check_addr = (i == ROUNDDOWN((void *)va, PGSIZE))? (uintptr_t)va:(uintptr_t)i;
+			cprintf("[-] page [0x%x] perf error, %d, %d\n", (uint32_t)(*pte), ((uint32_t)(*pte) & perm), perm);
 			return -E_FAULT;
 		}
 

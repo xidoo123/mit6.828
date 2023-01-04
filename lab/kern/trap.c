@@ -388,6 +388,8 @@ page_fault_handler(struct Trapframe *tf)
 
 	if (curenv->env_pgfault_upcall) {
 
+		cprintf("Page fault at 0x%x, env_pgfault_upcall: 0x%x\n", fault_va, curenv->env_pgfault_upcall);
+
 		// if pgfault happens in user stack
 		uint32_t estack_top = UXSTACKTOP;
 

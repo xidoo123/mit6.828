@@ -665,7 +665,7 @@ flush_block(void *addr)
   80045e:	89 de                	mov    %ebx,%esi
   800460:	81 e6 00 f0 ff ff    	and    $0xfffff000,%esi
 
-	int r = ide_write(blockno * 8, base_addr, 8);
+	int r = ide_write(blockno * (BLKSIZE / SECTSIZE), base_addr, (BLKSIZE / SECTSIZE));
   800466:	83 ec 04             	sub    $0x4,%esp
   800469:	6a 08                	push   $0x8
   80046b:	56                   	push   %esi

@@ -1,0 +1,753 @@
++ ld obj/kern/kernel
++ mk obj/kern/kernel.img
+6828 decimal is 15254 octal!
+Physical memory: 131072K available, base = 640K, extended = 130432K
+[?] non-boot CPUs (APs)
+check_page_free_list() succeeded!
+check_page_alloc() succeeded!
+[nnn] 0xef800000, len 0x2000
+[nnn] 0xef802000, len 0x1000
+check_page() succeeded!
+[nnn] 0xef000000, len 0x400000
+[nnn] 0xeec00000, len 0x400000
+[nnn] 0xefff8000, len 0x8000
+[nnn] 0xf0000000, len 0x10000000
+[nnn] 0xefff8000, len 0x8000
+[nnn] 0xeffe8000, len 0x8000
+[nnn] 0xeffd8000, len 0x8000
+[nnn] 0xeffc8000, len 0x8000
+[nnn] 0xeffb8000, len 0x8000
+[nnn] 0xeffa8000, len 0x8000
+[nnn] 0xeff98000, len 0x8000
+[nnn] 0xeff88000, len 0x8000
+check_kern_pgdir() succeeded!
+check_page_free_list() succeeded!
+check_page_installed_pgdir() succeeded!
+SMP: CPU 0 found 1 CPU(s)
+[nnn] 0xef803000, len 0x1000
+enabled interrupts: 1 2 4
+FS is running
+FS can do I/O
+Device 1 presence: 1
+Page fault at 0x10001000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x10001000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x10001000, env_pgfault_upcall: 0x8027d1
+block cache is good
+superblock is good
+Page fault at 0x10002000, env_pgfault_upcall: 0x8027d1
+bitmap is good
+alloc_block is good
+Page fault at 0x1006a000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x1006b000, env_pgfault_upcall: 0x8027d1
+file_open is good
+Page fault at 0x10003000, env_pgfault_upcall: 0x8027d1
+file_get_block is good
+file_flush is good
+file_truncate is good
+file rewrite is good
+running sh -x < testshell.sh | cat
+Page fault at 0xeebfdf50, env_pgfault_upcall: 0x8025e7
+[hit file is not a valid executable]
+[hit 0x801395]
+[hit 4097]
+Page fault at 0x806000, env_pgfault_upcall: 0x8025e7
+Page fault at 0xeebfdf54, env_pgfault_upcall: 0x8025e7
+[hit file is not a valid executable]
+[hit 0x801280]
+[hit 4098]
+Page fault at 0x805004, env_pgfault_upcall: 0x8025e7
+Page fault at 0x806000, env_pgfault_upcall: 0x8025e7
+Page fault at 0x1003f000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x10040000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x10041000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x10042000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x10043000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x10044000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x10008000, env_pgfault_upcall: 0x8027d1
+Page fault at 0xeebfdf4c, env_pgfault_upcall: 0x802e32
+[hit file is not a valid executable]
+[hit 0x80197c]
+[hit 4099]
+Page fault at 0x80184e, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x10007000, env_pgfault_upcall: 0x8027d1
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Error hit
+Error hit3, 0x358027
+Error hit4, 0xf0358000, 0x0
+[-] page [0x0] error, 0, 7
+[00001004] user_mem_check assertion failure for va eebfefd4
+Page fault at 0x806000, env_pgfault_upcall: 0x802e32
+Page fault at 0x805020, env_pgfault_upcall: 0x802e32
+Page fault at 0x807000, env_pgfault_upcall: 0x802e32
+Page fault at 0xeebfdf4c, env_pgfault_upcall: 0x802e32
+[hit file is not a valid executable]
+[hit 0x80197c]
+[hit 4099]
+Page fault at 0x80184e, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Error hit
+Error hit3, 0x370027
+Error hit4, 0xf0370000, 0x0
+[-] page [0x0] error, 0, 7
+[00002004] user_mem_check assertion failure for va eebfefd4
+shell produced incorrect output.
+expected:
+===
+Page fault at 0x806000, env_pgfault_upcall: 0x802e32
+hello world
+# cat lorem
+Lorem ipsum dolor sit amet, consectetur
+adipisicing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna
+aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit
+in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint
+occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim
+id est laborum.
+# cat lorem |num
+    1 Lorem ipsum dolor sit amet, consectetur
+    2 adipisicing elit, sed do eiusmod tempor
+    3 incididunt ut labore et dolore magna
+    4 aliqua. Ut enim ad minim veniam, quis
+    5 nostrud exercitation ullamco laboris
+    6 nisi ut aliquip ex ea commodo consequat.
+    7 Duis aute irure dolor in reprehenderit
+    8 in voluptate velit esse cillum dolore eu
+    9 fugiat nulla pariatur. Excepteur sint
+   10 occaecat cupidatat non proident, sunt in
+   11 culpa qui officia deserunt mollit anim
+   12 id est laborum.
+# cat lorem |num |num |num |num |num
+    1     1     1     1     1 Lorem ipsum dolor sit amet, consectetur
+    2     2     2     2     2 adipisicing elit, sed do eiusmod tempor
+    3     3     3     3     3 incididunt ut labore et dolore magna
+    4     4     4     4     4 aliqua. Ut enim ad minim veniam, quis
+    5     5     5     5     5 nostrud exercitation ullamco laboris
+    6     6     6     6     6 nisi ut aliquip ex ea commodo consequat.
+    7     7     7     7     7 Duis aute irure dolor in reprehenderit
+    8     8     8     8     8 in voluptate velit esse cillum dolore eu
+    9     9     9     9     9 fugiat nulla pariatur. Excepteur sint
+   10    10    10    10    10 occaecat cupidatat non proident, sunt in
+   11    11    11    11    11 culpa qui officiPage fault at 0x805020, env_pgfault_upcall: 0x802e32
+a deserunt mollit anim
+   12    12    12    12    12 id est laborum.
+# lsfd -1
+fd 0: name testshell.sh isdir 0 size 113 dev file
+fd 1: name <pipe> isdir 0 size 32 dev pipe
+fd 3: name <pipe> isdir 0 size 32 dev pipe
+# cat script
+echo This is from the script.
+cat lorem | num | cat
+echo These are my file descriptors.
+lsfd -1
+echo This is the end of the script.
+# sh <script
+This is from the script.
+    1 Lorem ipsum dolor sit amet, consectetur
+    2 adipisicing elit, sed do eiusmod tempor
+    3 incididunt ut labore et dolore magna
+    4 aliqua. Ut enim ad minim veniam, quis
+    5 nostrud exercitation ullamco laboris
+    6 nisi ut aliquip ex ea commodo consequat.
+    7 Duis aute irure dolor in reprehenderit
+    8 in voluptate velit esse cillum dolore eu
+    9 fugiat nulla pariatur. Excepteur sint
+   10 occaecat cupidatat non proident, sunt in
+   11 culpa qui officia deserunt mollit anim
+   12 id est laborum.
+These are my file descriptors.
+fd 0: name script isdir 0 size 132 dev file
+fd 1: name <pipe> isdir 0 size 32 dev pipe
+fd 3: name <pipe> isdir 0 size 32 dev pipe
+This is the end of the script.
+===
+got:
+===
+ cat lorem
+Page fault at 0x807000, env_pgfault_upcall: 0x802e32
+Page fault at 0xeebfdf4c, env_pgfault_upcall: 0x802e32
+[hit file is not a valid executable]
+[hit 0x80197c]
+[hit 4099]
+Page fault at 0x80184e, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+# cat lorem |num
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Error hit
+Error hit3, 0x357027
+Error hit4, 0xf0357000, 0x0
+[-] page [0x0] error, 0, 7
+[00003004] user_mem_check assertion failure for va eebfefd4
+Page fault at 0x806000, env_pgfault_upcall: 0x802e32
+Page fault at 0x805020, env_pgfault_upcall: 0x802e32
+# cat lorem |num |num |num |num Page fault at 0x807000, env_pgfault_upcall: 0x802e32
+|num
+Page fault at 0xeebfdf4c, env_pgfault_upcall: 0x802e32
+[hit file is not a valid executable]
+[hit 0x80197c]
+[hit 4099]
+Page fault at 0x80184e, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Error hit
+Error hit3, 0x359027
+Error hit4, 0xf0359000, 0x0
+[-] page [0x0] error, 0, 7
+[00004004] user_mem_check assertion failure for va eebfefd4
+Page fault at 0x806000, env_pgfault_upcall: 0x802e32
+Page fault at 0x805020, env_pgfault_upcall: 0x802e32
+Page fault at 0x807000, env_pgfault_upcall: 0x802e32
+# lsfd -1
+Page fault at 0xeebfdf4c, env_pgfault_upcall: 0x802e32
+[hit file is not a valid executable]
+[hit 0x80197c]
+[hit 4099]
+Page fault at 0x80184e, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Error hit
+Error hit3, 0x355027
+Error hit4, 0xf0355000, 0x0
+[-] page [0x0] error, 0, 7
+[00005004] user_mem_check assertion failure for va eebfefd4
+Page fault at 0x806000, env_pgfault_upcall: 0x802e32
+Page fault at 0x805020, env_pgfault_upcall: 0x802e32
+Page fault at 0x807000, env_pgfault_upcall: 0x802e32
+Page fault at 0xeebfdf4c, env_pgfault_upcall: 0x802e32
+[hit file is not a valid executable]
+[hit 0x80197c]
+[hit 4099]
+Page fault at 0x80184e, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+# cat script
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Error hit
+Error hit3, 0x35a027
+Error hit4, 0xf035a000, 0x0
+[-] page [0x0] error, 0, 7
+[00006004] user_mem_check assertion failure for va eebfefd4
+Page fault at 0x806000, env_pgfault_upcall: 0x802e32
+Page fault at 0x805020, env_pgfault_upcall: 0x802e32
+Page fault at 0x807000, env_pgfault_upcall: 0x802e32
+Page fault at 0xeebfdf4c, env_pgfault_upcall: 0x802e32
+[hit file is not a valid executable]
+[hit 0x80197c]
+[hit 4099]
+Page fault at 0x80184e, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+# sh <script
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Page fault at 0x802e32, env_pgfault_upcall: 0x802e32
+Error hit
+Error hit3, 0x358027
+Error hit4, 0xf0358000, 0x0
+[-] page [0x0] error, 0, 7
+[00007004] user_mem_check assertion failure for va eebfefd4
+Page fault at 0x806000, env_pgfault_upcall: 0x802e32
+===
+No runnable environments in the system!
+Welcome to the JOS kernel monitor!
+Type 'help' for a list of commands.
+qemu: terminating on signal 15 from pid 16675

@@ -43,6 +43,14 @@ pgfault(struct UTrapframe *utf)
 	addr = ROUNDDOWN(addr, PGSIZE);
 	envid_t envid = sys_getenvid();
 
+	if ( (uint32_t)addr ==  0xeebfd000) {
+		cprintf("[hit %e]\n", utf->utf_err);
+		cprintf("[hit 0x%x]\n", utf->utf_eip);
+		cprintf("[hit %d]\n", envid);
+	}
+
+	// envid = 0;
+
 	// Allocate a new page, map it at a temporary location (PFTEMP)
 	r = sys_page_alloc(envid, (void *)PFTEMP, PTE_U | PTE_P | PTE_W);
 	if (r < 0)

@@ -94,7 +94,7 @@ flush_block(void *addr)
 	
 	void* base_addr = ROUNDDOWN(addr, PGSIZE);
 
-	int r = ide_write(blockno * 8, base_addr, 8);
+	int r = ide_write(blockno * (BLKSIZE / SECTSIZE), base_addr, (BLKSIZE / SECTSIZE));
 	if (r < 0)
 		panic("flush_block: ide_write: %e", r);
 
