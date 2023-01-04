@@ -50,6 +50,7 @@ umain(int argc, char **argv)
 		panic("file_read: %e", r);
 	if (strcmp(buf, msg) != 0)
 		panic("file_read returned wrong data");
+		// panic("file_read returned wrong data, buf[%d]: %s\n", strlen(buf), buf);
 	cprintf("file_read is good\n");
 
 	if ((r = devfile.dev_close(FVA)) < 0)
