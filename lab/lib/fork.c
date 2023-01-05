@@ -43,12 +43,6 @@ pgfault(struct UTrapframe *utf)
 	addr = ROUNDDOWN(addr, PGSIZE);
 	envid_t envid = sys_getenvid();
 
-	if ( (uint32_t)addr ==  0xeebfd000) {
-		cprintf("[hit %e]\n", utf->utf_err);
-		cprintf("[hit 0x%x]\n", utf->utf_eip);
-		cprintf("[hit %d]\n", envid);
-	}
-
 	// envid = 0;
 
 	// Allocate a new page, map it at a temporary location (PFTEMP)
@@ -169,7 +163,8 @@ fork(void)
 			if ((uvpt[PGNUM(addr)] & PTE_P) == PTE_P) {
 
 				// For each writable or copy-on-write page
-				if ((uvpt[PGNUM(addr)] & (PTE_W | PTE_COW)) != 0) {
+				// if ((uvpt[PGNUM(addr)] & (PTE_W | PTE_COW)) != 0) {
+				if ((uvpt[PGNUM(addr)] & PTE_U) != 0) {
 					r = duppage(envid, pn);
 					if (r < 0)
 						return r;
