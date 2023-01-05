@@ -2888,9 +2888,9 @@ sys_exofork(void)
   800f92:	e9 3f 01 00 00       	jmp    8010d6 <fork+0x193>
   800f97:	89 45 e4             	mov    %eax,-0x1c(%ebp)
   800f9a:	89 c7                	mov    %eax,%edi
+	for (uint32_t pn = PGNUM(UTEXT); pn < PGNUM(USTACKTOP); pn++) {
 
 		addr = pn * PGSIZE;
-		// pde_t *pgdir =  curenv->env_pgdir;
 
 		// if level-2 page exists
 		if ((uvpd[PDX(addr)] & PTE_P) == PTE_P) {
@@ -3109,7 +3109,7 @@ sfork(void)
   8010e3:	83 ec 0c             	sub    $0xc,%esp
 	panic("sfork not implemented");
   8010e6:	68 8b 27 80 00       	push   $0x80278b
-  8010eb:	68 ca 00 00 00       	push   $0xca
+  8010eb:	68 c9 00 00 00       	push   $0xc9
   8010f0:	68 80 27 80 00       	push   $0x802780
   8010f5:	e8 1e f1 ff ff       	call   800218 <_panic>
 

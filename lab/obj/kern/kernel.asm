@@ -263,7 +263,7 @@ f0100192:	e8 d5 31 00 00       	call   f010336c <env_create>
 	ENV_CREATE(TEST, ENV_TYPE_USER);
 f0100197:	83 c4 08             	add    $0x8,%esp
 f010019a:	6a 00                	push   $0x0
-f010019c:	68 9c bd 1c f0       	push   $0xf01cbd9c
+f010019c:	68 40 0c 20 f0       	push   $0xf0200c40
 f01001a1:	e8 c6 31 00 00       	call   f010336c <env_create>
 	ENV_CREATE(user_icode, ENV_TYPE_USER);
 	// ENV_CREATE(user_primes, ENV_TYPE_USER);

@@ -711,6 +711,35 @@ testfile: OK (1.7s)
 
 Fix a bug in `fork` in previous lab, the handin said For each writable or copy-on-write page in its address space below UTOP, the parent calls duppage, but if we do that there will an endless loop of exception while opening shell, causing user exception stack out of bound. Check commit: https://github.com/xidoo123/mit6.828/commit/81afbcc625bad4df9e69e73769f06071e4cac6d8
 
+Final result
 
+```
+make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
+internal FS tests [fs/test.c]: OK (1.1s)
+  fs i/o: OK
+  check_bc: OK
+  check_super: OK
+  check_bitmap: OK
+  alloc_block: OK
+  file_open: OK
+  file_get_block: OK
+  file_flush/file_truncate/file rewrite: OK
+testfile: OK (1.3s)
+  serve_open/file_stat/file_close: OK
+  file_read: OK
+  file_write: OK
+  file_read after file_write: OK
+  open: OK
+  large file: OK
+spawn via spawnhello: OK (0.7s)
+Protection I/O space: OK (1.1s)
+PTE_SHARE [testpteshare]: OK (2.0s)
+PTE_SHARE [testfdsharing]: OK (2.0s)
+start the shell [icode]: Timeout! OK (31.6s)
+testshell: OK (0.9s)
+    (Old jos.out.testshell failure log removed)
+primespipe: OK (5.4s)
+Score: 150/150
+```
 
 

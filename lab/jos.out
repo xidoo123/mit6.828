@@ -5,1902 +5,206 @@ Physical memory: 131072K available, base = 640K, extended = 130432K
 [?] non-boot CPUs (APs)
 check_page_free_list() succeeded!
 check_page_alloc() succeeded!
-[nnn] 0xef800000, len 0x2000
-[nnn] 0xef802000, len 0x1000
+[boot_map_region] 0xef800000, len 0x2000
+[boot_map_region] 0xef802000, len 0x1000
 check_page() succeeded!
-[nnn] 0xef000000, len 0x400000
-[nnn] 0xeec00000, len 0x400000
-[nnn] 0xefff8000, len 0x8000
-[nnn] 0xf0000000, len 0x10000000
-[nnn] 0xefff8000, len 0x8000
-[nnn] 0xeffe8000, len 0x8000
-[nnn] 0xeffd8000, len 0x8000
-[nnn] 0xeffc8000, len 0x8000
-[nnn] 0xeffb8000, len 0x8000
-[nnn] 0xeffa8000, len 0x8000
-[nnn] 0xeff98000, len 0x8000
-[nnn] 0xeff88000, len 0x8000
+[boot_map_region] 0xef000000, len 0x400000
+[boot_map_region] 0xeec00000, len 0x400000
+[boot_map_region] 0xefff8000, len 0x8000
+[boot_map_region] 0xf0000000, len 0x10000000
+[boot_map_region] 0xefff8000, len 0x8000
+[boot_map_region] 0xeffe8000, len 0x8000
+[boot_map_region] 0xeffd8000, len 0x8000
+[boot_map_region] 0xeffc8000, len 0x8000
+[boot_map_region] 0xeffb8000, len 0x8000
+[boot_map_region] 0xeffa8000, len 0x8000
+[boot_map_region] 0xeff98000, len 0x8000
+[boot_map_region] 0xeff88000, len 0x8000
 check_kern_pgdir() succeeded!
 check_page_free_list() succeeded!
 check_page_installed_pgdir() succeeded!
 SMP: CPU 0 found 1 CPU(s)
-[nnn] 0xef803000, len 0x1000
+[boot_map_region] 0xef803000, len 0x1000
 enabled interrupts: 1 2 4
 FS is running
 FS can do I/O
 Device 1 presence: 1
-Page fault at 0x10001000, env_pgfault_upcall: 0x8027d1
-Page fault at 0x10001000, env_pgfault_upcall: 0x8027d1
-Page fault at 0x10001000, env_pgfault_upcall: 0x8027d1
 block cache is good
 superblock is good
-Page fault at 0x10002000, env_pgfault_upcall: 0x8027d1
-Page fault at 0xeebfdf80, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4097]
-Page fault at 0xeebfdf84, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4098]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
-2
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
 bitmap is good
 alloc_block is good
-Page fault at 0x1006a000, env_pgfault_upcall: 0x8027d1
-Page fault at 0x1006b000, env_pgfault_upcall: 0x8027d1
 file_open is good
-Page fault at 0x10003000, env_pgfault_upcall: 0x8027d1
 file_get_block is good
 file_flush is good
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4098]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4099]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
-3
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4099]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4100]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
-5
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4100]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4101]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
-7
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4101]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
 file_truncate is good
 file rewrite is good
-[hit 0x801034]
-[hit 4102]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
+2
+3
+5
+7
 11
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4102]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4103]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 13
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4103]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4104]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 17
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4104]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4105]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 19
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4105]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4106]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 23
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4106]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4107]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 29
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4107]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4108]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 31
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4108]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4109]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 37
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4109]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4110]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 41
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4110]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4111]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 43
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4111]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4112]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 47
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4112]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4113]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 53
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4113]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4114]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 59
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4114]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4115]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 61
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4115]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4116]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 67
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4116]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4117]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 71
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4117]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4118]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 73
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4118]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4119]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 79
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4119]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4120]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 83
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4120]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4121]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 89
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4121]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4122]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 97
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4122]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4123]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 101
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4123]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4124]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 103
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4124]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4125]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 107
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4125]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4126]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 109
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4126]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4127]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 113
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4127]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4128]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 127
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4128]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4129]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 131
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4129]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4130]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 137
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4130]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4131]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 139
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4131]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4132]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 149
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4132]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4133]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 151
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4133]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4134]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 157
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4134]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4135]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 163
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4135]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4136]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 167
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4136]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4137]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 173
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4137]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4138]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 179
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4138]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4139]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 181
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4139]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4140]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 191
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4140]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4141]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 193
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4141]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4142]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 197
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4142]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4143]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 199
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4143]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4144]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 211
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4144]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4145]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 223
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4145]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4146]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 227
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4146]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4147]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 229
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4147]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4148]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 233
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4148]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4149]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 239
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4149]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4150]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 241
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4150]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4151]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 251
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4151]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4152]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 257
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4152]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4153]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 263
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4153]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4154]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 269
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4154]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4155]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 271
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4155]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4156]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 277
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4156]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4157]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 281
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4157]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4158]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 283
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4158]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4159]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 293
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4159]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4160]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 307
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4160]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4161]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 311
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4161]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4162]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 313
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4162]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4163]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 317
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4163]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4164]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 331
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4164]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4165]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 337
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4165]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4166]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 347
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4166]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4167]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 349
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4167]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4168]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 353
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4168]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4169]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 359
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4169]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4170]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 367
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4170]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4171]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 373
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4171]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4172]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 379
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4172]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4173]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 383
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4173]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4174]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 389
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4174]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4175]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 397
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4175]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4176]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 401
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4176]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4177]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 409
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4177]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4178]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 419
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4178]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4179]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 421
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4179]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4180]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 431
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4180]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4181]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 433
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4181]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4182]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 439
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4182]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4183]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 443
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4183]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4184]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 449
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4184]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4185]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 457
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4185]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4186]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 461
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4186]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4187]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 463
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4187]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4188]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 467
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4188]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4189]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 479
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4189]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4190]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 487
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4190]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4191]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 491
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4191]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4192]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 499
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4192]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4193]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 503
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4193]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4194]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 509
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4194]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4195]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 521
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4195]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4196]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 523
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4196]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4197]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 541
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4197]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4198]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 547
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4198]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4199]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 557
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4199]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4200]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 563
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4200]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4201]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 569
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4201]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4202]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 571
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4202]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4203]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 577
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4203]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4204]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 587
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4204]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4205]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 593
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4205]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4206]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 599
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4206]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4207]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 601
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4207]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4208]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 607
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4208]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4209]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 613
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4209]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4210]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 617
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4210]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4211]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 619
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4211]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4212]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 631
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4212]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4213]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 641
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4213]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4214]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 643
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4214]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4215]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 647
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4215]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4216]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 653
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4216]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4217]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 659
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4217]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4218]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 661
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4218]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4219]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 673
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4219]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4220]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 677
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4220]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4221]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 683
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4221]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4222]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 691
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4222]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4223]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 701
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4223]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4224]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 709
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4224]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4225]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 719
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4225]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4226]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 727
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4226]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4227]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 733
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4227]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4228]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 739
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4228]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4229]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 743
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4229]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4230]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 751
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4230]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4231]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 757
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4231]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4232]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 761
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4232]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4233]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 769
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4233]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4234]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 773
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4234]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4235]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 787
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4235]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4236]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 797
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4236]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4237]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 809
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4237]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4238]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 811
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4238]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4239]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 821
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4239]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4240]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 823
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4240]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4241]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 827
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4241]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4242]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 829
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4242]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4243]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 839
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4243]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4244]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 853
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4244]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4245]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 857
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4245]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4246]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 859
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4246]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4247]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 863
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4247]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4248]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 877
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4248]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4249]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 881
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4249]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4250]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 883
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4250]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4251]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 887
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4251]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4252]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 907
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4252]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4253]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 911
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4253]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4254]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 919
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4254]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4255]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 929
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4255]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4256]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 937
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4256]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4257]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 941
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4257]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4258]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 947
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4258]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4259]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 953
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4259]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4260]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 967
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4260]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4261]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 971
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4261]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4262]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 977
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4262]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4263]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 983
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4263]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4264]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 991
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4264]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4265]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 997
-Page fault at 0x806000, env_pgfault_upcall: 0x801edf
-Page fault at 0xeebfdf40, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801149]
-[hit 4265]
-Page fault at 0xeebfdf44, env_pgfault_upcall: 0x801edf
-[hit file is not a valid executable]
-[hit 0x801034]
-[hit 4266]
-Page fault at 0x804004, env_pgfault_upcall: 0x801edf
 1009
-qemu: terminating on signal 15 from pid 16778
+qemu: terminating on signal 15 from pid 24287
