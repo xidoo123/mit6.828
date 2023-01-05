@@ -709,7 +709,7 @@ testfile: OK (1.7s)
   large file: OK
 ```
 
-Fix a bug in `fork` in previous lab, the handin said For each writable or copy-on-write page in its address space below UTOP, the parent calls duppage, but if we do that there will an endless loop of exception while opening shell, causing user exception stack out of bound.  
+Fix a bug in `fork` in previous lab, the handin said For each writable or copy-on-write page in its address space below UTOP, the parent calls duppage, but if we do that there will an endless loop of exception while opening shell, causing user exception stack out of bound. Check commit: https://github.com/xidoo123/mit6.828/commit/81afbcc625bad4df9e69e73769f06071e4cac6d8
 
 
 
