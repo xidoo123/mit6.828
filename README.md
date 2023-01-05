@@ -686,7 +686,7 @@ Part C score: 25/25
 Score: 80/80
 ```
 
-# lab 4
+# lab 5
 
 WARNING: parameter `ppdiskbno` in `file_block_walk` stores the *address* of the block, not the block number.
 
