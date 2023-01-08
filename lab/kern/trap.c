@@ -13,6 +13,7 @@
 #include <kern/picirq.h>
 #include <kern/cpu.h>
 #include <kern/spinlock.h>
+#include <kern/time.h>
 
 #include <inc/string.h>
 
@@ -234,11 +235,23 @@ trap_dispatch(struct Trapframe *tf)
 	// Handle processor exceptions.
 	// LAB 3: Your code here.
 
+	// Handle spurious interrupts
+	// The hardware sometimes raises these because of noise on the
+	// IRQ line or other reasons. We don't care.
+
+	// Handle clock interrupts. Don't forget to acknowledge the
 	// interrupt using lapic_eoi() before calling the scheduler!
- 	// LAB 4: Your code here.
- 
+	// LAB 4: Your code here.
+
+	// Add time tick increment to clock interrupts.
+	// Be careful! In multiprocessors, clock interrupts are
+	// triggered on every CPU.
+	// LAB 6: Your code here.
+
+
 	// Handle keyboard and serial interrupts.
 	// LAB 5: Your code here.
+
 	struct PushRegs* r = &tf->tf_regs;
 
 	switch(tf->tf_trapno) {
@@ -256,12 +269,16 @@ trap_dispatch(struct Trapframe *tf)
 			lapic_eoi();	// Acknowledge interrupt.
 			sched_yield();
 			break;
-		case (IRQ_OFFSET+IRQ_KBD):
+		case (IRQ_OFFSET + IRQ_KBD):
 			kbd_intr();
 			break;
-		case (IRQ_OFFSET+IRQ_SERIAL):
+		case (IRQ_OFFSET + IRQ_SERIAL):
 			serial_intr();
 			break;
+		case (IRQ_OFFSET + IRQ_SPURIOUS):
+			cprintf("Spurious interrupt on irq 7\n");
+			print_trapframe(tf);
+			return;
 		default:
 			// Unexpected trap: The user process or the kernel has a bug.
 			cprintf("[trapno: %x]\n", tf->tf_trapno);
