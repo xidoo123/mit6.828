@@ -1,3 +1,12 @@
++ cc[USER] net/testoutput.c
++ cc[USER] net/timer.c
++ cc[USER] net/input.c
++ cc[USER] net/output.c
++ ld obj/net/testoutput
++ cc[USER] net/testinput.c
++ ld obj/net/testinput
++ cc[USER] net/serv.c
++ ld obj/net/ns
 + ld obj/kern/kernel
 + mk obj/kern/kernel.img
 6828 decimal is 15254 octal!
@@ -32,15 +41,16 @@ PCI: 00:01.1: 8086:7010: class: 1.1 (Storage controller) irq: 0
 PCI: 00:01.3: 8086:7113: class: 6.80 (Bridge device) irq: 9
 PCI: 00:02.0: 1234:1111: class: 3.0 (Display controller) irq: 0
 PCI: 00:03.0: 8086:100e: class: 2.0 (Network controller) irq: 11
+PCI function 00:03.0 (8086:100e) enabled
+[boot_map_region] 0xef804000, len 0x20000
 FS is running
 FS can do I/O
 Device 1 presence: 1
 block cache is good
 superblock is good
 bitmap is good
-hello, world
-i am environment 00001001
+Sending ARP announcement...
 No runnable environments in the system!
 Welcome to the JOS kernel monitor!
 Type 'help' for a list of commands.
-qemu: terminating on signal 15 from pid 32296
+qemu: terminating on signal 15 from pid 49907

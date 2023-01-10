@@ -743,3 +743,14 @@ Score: 150/150
 ```
 
 
+# Lab 6
+
+If you want to do a brief test after Exercise 6, you can add these two lines right before the `ENV_CREATE(user_blabla)` in `init_i386`, you will be able to see the results shown in hand-in.
+
+```c
+char tmp[10] = "aaaaaaaa";
+e1000_transmit(tmp, 8);
+```
+
+
+

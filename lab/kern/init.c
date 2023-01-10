@@ -17,6 +17,8 @@
 #include <kern/time.h>
 #include <kern/pci.h>
 
+#include <kern/e1000.h>
+
 static void boot_aps(void);
 
 
@@ -68,6 +70,10 @@ i386_init(void)
 #else
 	// Touch all you want.
 	// ENV_CREATE(user_dumbfork, ENV_TYPE_USER);
+
+	char tmp[10] = "aaaaaaaa";
+	e1000_transmit(tmp, 8);
+
 	ENV_CREATE(user_icode, ENV_TYPE_USER);
 	// ENV_CREATE(user_primes, ENV_TYPE_USER);
 #endif // TEST*
