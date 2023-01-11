@@ -6,12 +6,21 @@
 // LAB 6: Your driver code here
 
 volatile uint32_t *e1000;
+
 struct e1000_tx_desc transmit_desc_array[32];
 char transmit_buffer[32][1520];
 struct e1000_tdh *tdh;
 struct e1000_tdt *tdt;
 
+struct e1000_rx_desc receive_desc_array[128];
+char receive_buffer[128][1520];
+struct e1000_rdh *rdh;
+struct e1000_rdt *rdt;
+
+uint32_t E1000_MAC[6] = {0x52, 0x54, 0x00, 0x12, 0x34, 0x56};
+
 void e1000_transmit_init();
+void e1000_receive_init();
 
 
 int 
@@ -31,7 +40,7 @@ pci_e1000_attach(struct pci_func *f)
         return -1;
     
     e1000_transmit_init();
-    // e1000_receive_init();
+    e1000_receive_init();
 
     return 0;
 }
@@ -91,5 +100,74 @@ e1000_transmit(char *data, uint32_t len)
     uint32_t next = (current + 1) % 32;
     tdt->tdt = next;
 
+    return 0;
+}
+
+void
+get_ra_address(uint32_t mac[], uint32_t *ral, uint32_t *rah)
+{
+    uint32_t low = 0, high = 0;
+    int i;
+
+    for (i = 0; i < 4; i++) {
+            low |= mac[i] << (8 * i);
+    }
+
+    for (i = 4; i < 6; i++) {
+            high |= mac[i] << (8 * i);
+    }
+
+    *ral = low;
+    *rah = high | E1000_RAH_AV;
+}
+
+void
+e1000_receive_init()
+{
+    uint32_t *rdbal = (uint32_t *)E1000_ADDR(E1000_RDBAL);
+    uint32_t *rdbah = (uint32_t *)E1000_ADDR(E1000_RDBAH);
+    *rdbal = PADDR(receive_desc_array);
+    *rdbah = 0;
+
+    int i;
+    for (i = 0; i < 128; i++) {
+            receive_desc_array[i].addr = PADDR(receive_buffer[i]);
+    }
+
+    struct e1000_rdlen *rdlen = (struct e1000_rdlen *)E1000_ADDR(E1000_RDLEN);
+    rdlen->len = 128;
+
+    rdh = (struct e1000_rdh *)E1000_ADDR(E1000_RDH);
+    rdt = (struct e1000_rdt *)E1000_ADDR(E1000_RDT);
+    rdh->rdh = 0;
+    rdt->rdt = 128-1;
+
+    uint32_t *rctl = (uint32_t *)E1000_ADDR(E1000_RCTL);
+    *rctl = E1000_RCTL_EN | E1000_RCTL_BAM | E1000_RCTL_SECRC;
+
+    uint32_t *ra = (uint32_t *)E1000_ADDR(E1000_RA);
+    uint32_t ral, rah;
+    get_ra_address(E1000_MAC, &ral, &rah);
+    ra[0] = ral;
+    ra[1] = rah;
+}
+
+int
+e1000_receive(char *addr, uint32_t *len)
+{
+    static int32_t next = 0;
+    if(!(receive_desc_array[next].status & E1000_RXD_STAT_DD)) {	//simply tell client to retry
+        return -2;
+    }
+    if(receive_desc_array[next].errors) {
+        cprintf("receive errors\n");
+        return -2;
+    }
+
+    *len = receive_desc_array[next].length;
+    memcpy(addr, receive_buffer[next], *len);
+
+    rdt->rdt = (rdt->rdt + 1) % 128;
+    next = (next + 1) % 128;
     return 0;
 }

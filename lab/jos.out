@@ -1,12 +1,3 @@
-+ cc[USER] net/testoutput.c
-+ cc[USER] net/timer.c
-+ cc[USER] net/input.c
-+ cc[USER] net/output.c
-+ ld obj/net/testoutput
-+ cc[USER] net/testinput.c
-+ ld obj/net/testinput
-+ cc[USER] net/serv.c
-+ ld obj/net/ns
 + ld obj/kern/kernel
 + mk obj/kern/kernel.img
 6828 decimal is 15254 octal!
@@ -49,8 +40,7 @@ Device 1 presence: 1
 block cache is good
 superblock is good
 bitmap is good
-Sending ARP announcement...
-No runnable environments in the system!
-Welcome to the JOS kernel monitor!
-Type 'help' for a list of commands.
-qemu: terminating on signal 15 from pid 49907
+ns: 52:54:00:12:34:56 bound to static IP 10.0.2.15
+NS: TCP/IP initialized.
+Waiting for http connections...
+qemu: terminating on signal 15 from pid 62600

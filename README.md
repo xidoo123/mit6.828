@@ -752,5 +752,57 @@ char tmp[10] = "aaaaaaaa";
 e1000_transmit(tmp, 8);
 ```
 
+In the last part, if you want to test whether there is a https server ruinning in JOS, `wget` is a good choice.
+
+```
+make run-httpd-nox
+
+# you will see
+# ns: 52:54:00:12:34:56 bound to static IP 10.0.2.15
+# NS: TCP/IP initialized.
+# Waiting for http connections...
+```
+
+And open another command line, do `wget` to check if you can receive index.html.
+
+```
+x1do0@ubuntu:~$ wget http://localhost:26002/index.html
+--2023-01-11 00:59:51--  http://localhost:26002/index.html
+Resolving localhost (localhost)... ::1, 127.0.0.1
+Connecting to localhost (localhost)|::1|:26002... failed: Connection refused.
+Connecting to localhost (localhost)|127.0.0.1|:26002... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘index.html’
+
+index.html                        [ <=>                                              ]     170  --.-KB/s    in 0s
+
+2023-01-11 00:59:52 (45.0 MB/s) - ‘index.html’ saved [170]
+```
+
+Final result:
+
+```
+make[1]: Leaving directory '/home/x1do0/mit6.828/lab'
+testtime: OK (7.6s)
+pci attach: OK (0.6s)
+testoutput [5 packets]: OK (1.7s)
+testoutput [100 packets]: OK (1.6s)
+Part A score: 35/35
+
+testinput [5 packets]: OK (2.1s)
+testinput [100 packets]: OK (5.8s)
+tcp echo server [echosrv]: OK (1.8s)
+web server [httpd]:
+  http://localhost:26002/: OK (0.8s)
+  http://localhost:26002/index.html: OK (1.8s)
+    (Old qemu.pcap.httpd_test-index.html failed packet capture deleted)
+    (Old jos.out.httpd_test-index.html failure log removed)
+  http://localhost:26002/random_file.txt: OK (1.9s)
+Part B score: 70/70
+
+Score: 105/105
+```
+
 
 

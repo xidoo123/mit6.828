@@ -128,3 +128,9 @@ sys_e1000_try_send(void *data, uint32_t len)
 {
 	return syscall(SYS_e1000_try_send, 1, (uint32_t)data, len, 0, 0, 0);
 }
+
+int
+sys_e1000_try_recv(void *buf, uint32_t* len)
+{
+	return syscall(SYS_e1000_try_recv, 1, (uint32_t)buf, (uint32_t)len, 0, 0, 0);
+}
